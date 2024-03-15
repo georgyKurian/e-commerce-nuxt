@@ -1,7 +1,7 @@
 <template>
   <span class="navbar-brand py-0 pl-5">
     <img
-      src="~/assets/fi-logo.svg"
+      src="~/assets/images/fi-logo.svg"
       width="300"
       height="40"
       alt="site-logo"

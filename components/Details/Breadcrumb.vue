@@ -9,9 +9,9 @@
           <NuxtLink to="/products">Products</NuxtLink>
         </li>
         <li class="breadcrumb-item">
-          <NuxtLink to="/products">{{ details.type }}</NuxtLink>
+          <NuxtLink to="/products">{{ product.type }}</NuxtLink>
         </li>
-        <li class="breadcrumb-item active">{{ details.title }}</li>
+        <li class="breadcrumb-item active">{{ product.title }}</li>
       </ol>
     </nav>
   </div>
@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  details: Product;
+  product: typeof Product;
 }>();
 </script>
 
@@ -45,4 +45,3 @@ defineProps<{
   }
 }
 </style>
-../../types/types

@@ -2,7 +2,7 @@
   <div>
     <div class="row mb-5">
       <div class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <img class="img-fluid" :src="`~/assets/${item.img}`" />
+        <img class="img-fluid" :src="imageUrl(item.img)" />
       </div>
 
       <div
@@ -49,7 +49,7 @@
 const mainStore = useMainStore();
 
 defineProps<{
-  item: Product;
+  item: typeof Product;
 }>();
 
 const quantity = ref(1);
@@ -61,6 +61,9 @@ function addtoCart(item: object) {
   for (var i = 0; i < quantity.value; i++) {
     mainStore.addToCart(item);
   }
+}
+function imageUrl(file: string) {
+  return `~/assets/images/${file}`;
 }
 </script>
 

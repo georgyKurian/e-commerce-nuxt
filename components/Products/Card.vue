@@ -1,100 +1,87 @@
 <template>
-  <div class="row justify-content-center text-center">
-    <div
-      v-for="item in cards"
-      class="col-10 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-4 pb-3"
-      :key="item.id"
-    >
-      <div class="card">
+  <div
+    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]"
+  >
+    <div class="relative">
+      <SfLink
+        :href="`/products/${props.product.id}`"
+        :tag="NuxtLink"
+        class="block"
+      >
         <img
-          class="card-img-top"
-          :src="imageUrl(item.img)"
-          alt="Card-image-cap"
-          title="Card-image-cap"
+          :src="imageUrl(props.product.img)"
+          alt="Great product"
+          class="block object-cover h-auto rounded-md aspect-square"
+          width="300"
+          height="300"
           loading="lazy"
         />
-        <div class="overlay">
-          <button
-            type="button"
-            class="btn btn-light btn-lg"
-            @click="mainStore.addToCart(item)"
-          >
-            Add +
-          </button>
-          <NuxtLink :to="`/products/${item.id}`">
-            <button
-              type="button"
-              @click="store.addtoInfo(item.id as number)"
-              class="btn btn-light btn-lg"
-            >
-              Info
-            </button>
-          </NuxtLink>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <price :value="item.price" class="card-text" />
-        </div>
+      </SfLink>
+      <SfButton
+        variant="tertiary"
+        size="sm"
+        square
+        class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
+        aria-label="Add to wishlist"
+      >
+        <SfIconFavorite size="sm" />
+      </SfButton>
+    </div>
+    <div class="p-4 border-t border-neutral-200">
+      <SfLink
+        :href="`/products/${props.product.id}`"
+        :tag="NuxtLink"
+        variant="secondary"
+        class="no-underline"
+      >
+        {{ props.product.title }}
+      </SfLink>
+      <div class="flex items-center pt-1">
+        <SfRating size="xs" :value="5" :max="5" />
+
+        <SfLink
+          :href="`/products/${props.product.id}`"
+          :tag="NuxtLink"
+          variant="secondary"
+          class="pl-1 no-underline"
+        >
+          <SfCounter size="xs">123</SfCounter>
+        </SfLink>
       </div>
+      <p
+        class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700"
+      >
+        Lightweight • Non slip • Flexible outsole • Easy to wear on and off
+      </p>
+      <span class="block pb-2 font-bold typography-text-lg">{{
+        props.product.price
+      }}</span>
+      <SfButton size="sm" @click="mainStore.addToCart(props.product)">
+        <template #prefix>
+          <SfIconShoppingCart size="sm" />
+        </template>
+        Add to cart
+      </SfButton>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-const store = useProductsStore();
+<script lang="ts" setup>
+import {
+  SfRating,
+  SfCounter,
+  SfLink,
+  SfButton,
+  SfIconShoppingCart,
+  SfIconFavorite,
+} from "@storefront-ui/vue";
 const mainStore = useMainStore();
 
-function imageUrl(file: string) {
-  return `_nuxt/assets/${file}`;
-}
-
-defineProps<{
-  cards: Product[];
+const props = defineProps<{
+  product: Product;
 }>();
-</script>
 
-<style lang="scss">
-/* Card Style */
-.card {
-  transition: 300ms;
-  position: relative;
-  overflow: hidden;
-
-  img {
-    z-index: 1;
-  }
-
-  button {
-    width: 140px;
-    margin-bottom: 10px;
-  }
-
-  &:hover img {
-    filter: blur(4px);
-  }
-
-  &:hover .overlay {
-    opacity: 0.4;
-  }
-
-  .overlay {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 70%;
-    background-color: #232b34;
-    opacity: 0;
-    z-index: 100;
-    transition: all 0.3s ease-in;
-  }
-
-  &:hover,
-  &:active {
-    transform: scaleY(1.02) scaleX(1.02);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25), 0 0px 40px rgba(0, 0, 0, 0.22);
-  }
+function imageUrl(file: string) {
+  return `_nuxt/assets/images/${file}`;
 }
-</style>
+</script>

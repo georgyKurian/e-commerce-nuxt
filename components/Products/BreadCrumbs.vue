@@ -1,31 +1,94 @@
 <template>
-  <div>
-    <h1 class="pt-3 text-center">New arrivals</h1>
-    <nav class="d-flex justify-content-center" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <NuxtLink to="/">Home</NuxtLink>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Products</li>
-      </ol>
-    </nav>
-  </div>
+  <nav class="inline-flex items-center text-sm font-normal font-body">
+    <ol class="flex w-auto leading-none group md:flex-wrap">
+      <li class="flex items-center sm:hidden text-neutral-500">
+        <SfDropdown
+          v-model="dropdownOpened"
+          strategy="absolute"
+          placement="bottom-start"
+          @update:model-value="close"
+        >
+          <template #trigger>
+            <SfButton
+              class="relative w-5 h-5 !p-0 rounded-sm outline-secondary-600 hover:bg-transparent active:bg-transparent"
+              aria-label="More breadcrumbs"
+              variant="tertiary"
+              square
+              @click="toggle"
+            >
+              <template #prefix>
+                <SfIconMoreHoriz
+                  size="sm"
+                  class="text-neutral-500 hover:text-primary-700 active:text-primary-800 active:bg-transparent"
+                />
+              </template>
+            </SfButton>
+          </template>
+          <div class="px-4 py-2 rounded-md shadow-md border-neutral-100">
+            <li
+              v-for="item in breadcrumbs"
+              :key="item.name"
+              class="py-2 last-of-type:hidden"
+            >
+              <SfLink
+                :href="item.link"
+                variant="secondary"
+                class="leading-5 no-underline text-inherit hover:underline active:underline whitespace-nowrap outline-secondary-600"
+              >
+                {{ item.name }}
+              </SfLink>
+            </li>
+          </div>
+        </SfDropdown>
+      </li>
+      <li
+        v-for="(item, index) in breadcrumbs"
+        :key="item.name"
+        icon=""
+        class="peer hidden sm:flex items-center peer-[:nth-of-type(even)]:before:content-[url('https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/chevron_right.svg')] peer-[:nth-of-type(even)]:before:inline-flex last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium"
+      >
+        <SfLink
+          v-if="index < breadcrumbs.length - 1"
+          :tag="NuxtLink"
+          :href="item.link"
+          variant="secondary"
+          class="leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit"
+        >
+          {{ item.name }}
+        </SfLink>
+        <span v-else>
+          {{ item.name }}
+        </span>
+      </li>
+    </ol>
+  </nav>
 </template>
 
-<style scoped lang="scss">
-.breadcrumb {
-  background: inherit !important;
-  color: #2c3539 !important;
-  font-size: 20px;
+<script lang="ts" setup>
+import {
+  SfDropdown,
+  SfButton,
+  SfLink,
+  SfIconMoreHoriz,
+} from "@storefront-ui/vue";
+import { ref } from "vue";
 
-  li {
-    text-decoration: none !important;
-    color: #f2be00 !important;
-  }
+const breadcrumbs = [
+  {
+    name: "Home",
+    link: "#",
+  },
+  { name: "Page 2", link: "#" },
+  { name: "Page 3", link: "#" },
+  { name: "Page 4", link: "#" },
+  { name: "Page 5", link: "#" },
+];
 
-  a {
-    text-decoration: none !important;
-    color: #2c3539 !important;
-  }
-}
-</style>
+const dropdownOpened = ref(false);
+const close = () => {
+  dropdownOpened.value = false;
+};
+const toggle = () => {
+  dropdownOpened.value = !dropdownOpened.value;
+};
+</script>

@@ -8,7 +8,7 @@
         >
           <img
             class="img-fluid"
-            src="~/assets/speaker.jpg"
+            src="~/assets/images/speaker.jpg"
             alt="speaker"
             title="speaker"
           />

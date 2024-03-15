@@ -1,8 +1,7 @@
 <template>
-  <section class="newsletter-area">
-    <div class="container">
+  <section class="newsletter-area p-16 bg-slate-200">
+    <div class="container mx-auto px-4">
       <div class="row justify-content-between">
-
         <!-- Newsletter Text -->
         <div class="col-12 col-lg-6">
           <div class="newsletter-text">
@@ -15,32 +14,29 @@
         <div class="col-12 col-lg-4">
           <div class="newsletter-form">
             <form>
-              <input class="nl-email" placeholder="Your E-mail">
-              <button class="input-button" @click.prevent="submit">Submit</button>
+              <input
+                class="w-full h-12 border-0 border-b-2 border-black bg-transparent text-xl italic outline-none px-8"
+                placeholder="Your E-mail"
+              />
+              <button class="input-button" @click.prevent="submit">
+                Submit
+              </button>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-
 function submit(): void {
-  return alert('Thank you for subscribing')
+  return alert("Thank you for subscribing");
 }
-
 </script>
 
 <style scoped lang="scss">
 .newsletter-area {
-  position: relative;
-  z-index: 1;
-  background-color: #dbf0fa;
-  padding: 75px;
-
   .newsletter-text {
     position: relative;
     z-index: 1;
@@ -59,9 +55,6 @@ function submit(): void {
 
   .newsletter-form {
     form {
-      position: relative;
-      z-index: 1;
-
       .nl-email {
         width: 100%;
         height: 50px;
@@ -89,7 +82,8 @@ function submit(): void {
       top: 0;
       z-index: 10;
       border: none;
-      box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.1), 0 16px 70px 0 rgba(0, 0, 0, 0.69);
+      box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.1),
+        0 16px 70px 0 rgba(0, 0, 0, 0.69);
 
       &:hover,
       &:focus {

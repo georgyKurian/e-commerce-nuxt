@@ -1,160 +1,260 @@
 <template>
-  <footer class="footer_area">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-3 col-xl-2 col-lg-3 col-md-3 col-sm-3">
-          <div class="footer-widget">
-            <div class="footer-title">Navigate</div>
-            <ul class="list-unstyled">
-              <NuxtLink to="/">
-                <li>About Us</li>
-              </NuxtLink>
-              <NuxtLink to="/">
-                <li>Blog</li>
-              </NuxtLink>
-              <NuxtLink to="/">
-                <li>Contact Us</li>
-              </NuxtLink>
-              <NuxtLink to="/">
-                <li>Sitemap</li>
-              </NuxtLink>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-3 col-xl-2 col-lg-3 col-md-3 col-sm-3">
-          <div class="footer-widget">
-            <div class="footer-title">Collection</div>
-            <ul class="list-unstyled">
-              <NuxtLink to="/products">
-                <li>New arrivals</li>
-              </NuxtLink>
-              <NuxtLink to="/products">
-                <li>Featured</li>
-              </NuxtLink>
-              <NuxtLink to="/products">
-                <li>Catalog</li>
-              </NuxtLink>
-              <NuxtLink to="/products">
-                <li>Brands</li>
-              </NuxtLink>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-3 col-xl-2 col-lg-3 col-md-3 col-sm-3">
-          <div class="footer-widget">
-            <div class="footer-title">Categories</div>
-            <ul class="list-unstyled">
-              <NuxtLink to="/products">
-                <li>Tables</li>
-              </NuxtLink>
-              <NuxtLink to="/products">
-                <li>Lamps</li>
-              </NuxtLink>
-              <NuxtLink to="/products">
-                <li>Chairs</li>
-              </NuxtLink>
-              <NuxtLink to="/products">
-                <li>Sofas</li>
-              </NuxtLink>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="col-12 col-xl-6 col-lg-3 col-md-3 col-sm-12 text-left text-md-right pb-5"
+  <footer class="pt-10 bg-neutral-100">
+    <div
+      class="grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] px-4 md:px-6 pb-10 container mx-auto"
+    >
+      <ul
+        v-for="{ label, subcategories } in categories"
+        :key="label"
+        class="grid grid-cols xs:pb-4"
+      >
+        <li
+          class="ml-4 text-lg font-medium leading-7 text-neutral-900 font-body"
         >
-          <div class="footer-widget">
-            <h3>399 Crowfield Road,</h3>
-            <h4>Phoenix, Arizona 85012</h4>
-            <a href="mailto:#">asff@fdsfsdc.com</a>
-            <h5>+602-926-5809</h5>
-          </div>
-        </div>
+          {{ label }}
+        </li>
+        <SfListItem
+          v-for="{ subcategoryLabel, link } in subcategories"
+          :key="subcategoryLabel"
+          class="py-2 !bg-transparent typography-text-sm font-body"
+        >
+          <SfLink
+            class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
+            variant="secondary"
+            :href="link"
+          >
+            {{ subcategoryLabel }}
+          </SfLink>
+        </SfListItem>
+      </ul>
+    </div>
+    <hr />
+    <div class="py-10 md:flex md:mx-auto max-w-[1536px]">
+      <div
+        v-for="{ label, icon, link, details } in contactOptions"
+        :key="label"
+        class="mx-auto my-4 text-center"
+      >
+        <component :is="icon" size="lg" />
+        <p class="py-1 my-2 font-medium typography-text-lg font-body">
+          <SfLink
+            variant="secondary"
+            class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
+            :href="link"
+          >
+            {{ label }}
+          </SfLink>
+        </p>
+        <p
+          v-for="option in details"
+          :key="option"
+          class="leading-5 typography-text-sm text-neutral-600 font-body"
+        >
+          {{ option }}
+        </p>
       </div>
-
-      <div class="row justify-content-between">
-        <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-6">
-          <div class="tiny-footer">
-            <p>Copyright © All Rights Reserved 2020</p>
-          </div>
+    </div>
+    <div class="bg-neutral-900 px-4 py-10 md:py-6">
+      <div class="w-full justify-end md:flex mx-auto container">
+        <div class="flex justify-center py-2 gap-x-4 md:self-start">
+          <SfButton
+            v-for="{ label, link, icon } in socialMedia"
+            :key="label"
+            tag="a"
+            square
+            variant="tertiary"
+            class="text-white active:text-white hover:text-white hover:!bg-neutral-500 active:!bg-transparent"
+            :href="link"
+            :aria-label="`Go to ${label} page`"
+          >
+            <component :is="icon" />
+          </SfButton>
         </div>
-        <div class="col-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 text-right">
-          <div class="social-info">
-            <strong>Get social</strong>
-            <img
-              width="35"
-              height="25"
-              loading="lazy"
-              src="~/assets/twitter.png"
-              alt="twitter-icon"
-              title="twitter-icon"
-            />
-            <img
-              width="35"
-              height="25"
-              loading="lazy"
-              src="~/assets/pinterest.png"
-              alt="pinterest-icon"
-              title="pinterest-icon"
-            />
-            <img
-              width="35"
-              height="25"
-              loading="lazy"
-              src="~/assets/facebook.png"
-              alt="facebook-icon"
-              title="facebook-icon"
-            />
-            <img
-              width="35"
-              height="25"
-              loading="lazy"
-              src="~/assets/insta.png"
-              alt="instagram-icon"
-              title="instagram-icon"
-            />
-          </div>
+        <div
+          class="flex items-center justify-center gap-6 py-2 my-4 md:ml-auto md:my-0"
+        >
+          <SfLink
+            v-for="{ label, link } in bottomLinks"
+            :key="label"
+            variant="secondary"
+            class="text-white no-underline typography-text-sm active:text-white active:underline hover:text-white hover:underline"
+            :href="link"
+          >
+            {{ label }}
+          </SfLink>
         </div>
+        <p
+          class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
+        >
+          @2023 Vue Storefront
+        </p>
       </div>
     </div>
   </footer>
 </template>
-
-<style scoped lang="scss">
-.footer_area {
-  position: relative;
-  z-index: 1;
-  color: #2c3539;
-  background-color: #fefefe;
-}
-
-.footer-widget {
-  padding-top: 60px;
-}
-
-.footer-title {
-  padding-bottom: 20px;
-  font-weight: bold;
-}
-
-.list-unstyled {
-  a {
-    text-decoration: none;
-
-    li {
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.social-info > img {
-  padding-left: 10px;
-}
-
-.social-info > img:hover {
-  opacity: 0.7;
-}
-</style>
+<script lang="ts" setup>
+import {
+  SfIconContactSupport,
+  SfIconFacebook,
+  SfIconHelp,
+  SfIconInstagram,
+  SfIconCall,
+  SfIconPinterest,
+  SfIconTwitter,
+  SfIconYoutube,
+  SfButton,
+  SfLink,
+  SfListItem,
+} from "@storefront-ui/vue";
+const categories = [
+  {
+    label: "How to buy",
+    subcategories: [
+      {
+        subcategoryLabel: "Payment methods",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Order pickup",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Purchase status",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Track orders",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Returns",
+        link: "#",
+      },
+    ],
+  },
+  {
+    label: "Help",
+    subcategories: [
+      {
+        subcategoryLabel: "Help centers",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Security & fraud",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Feedback",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Contact",
+        link: "#",
+      },
+    ],
+  },
+  {
+    label: "Services",
+    subcategories: [
+      {
+        subcategoryLabel: "Gift cards",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Order pickup",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Purchase status",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Track orders",
+        link: "#",
+      },
+    ],
+  },
+  {
+    label: "About",
+    subcategories: [
+      {
+        subcategoryLabel: "About us",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Order pickup",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Purchase status",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Track orders",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Returns",
+        link: "#",
+      },
+    ],
+  },
+];
+const socialMedia = [
+  {
+    label: "Facebook",
+    link: "#",
+    icon: SfIconFacebook,
+  },
+  {
+    label: "Twitter",
+    link: "#",
+    icon: SfIconTwitter,
+  },
+  {
+    label: "Instagram",
+    link: "#",
+    icon: SfIconInstagram,
+  },
+  {
+    label: "Pinterest",
+    link: "#",
+    icon: SfIconPinterest,
+  },
+  {
+    label: "Youtube",
+    link: "#",
+    icon: SfIconYoutube,
+  },
+];
+const contactOptions = [
+  {
+    label: "Help center",
+    link: "#",
+    details: ["Find answers online anytime"],
+    icon: SfIconHelp,
+  },
+  {
+    label: "Live chat",
+    link: "#",
+    details: ["Mon–Fri, 5am–10pm PT", "Sat–Sun, 6am–9pm PT"],
+    icon: SfIconContactSupport,
+  },
+  {
+    label: "1 234 567 8901",
+    link: "#",
+    details: ["Mon–Fri, 5am–10pm PT", "Sat–Sun, 6am–9pm PT"],
+    icon: SfIconCall,
+  },
+];
+const bottomLinks = [
+  {
+    label: "Terms",
+    link: "#",
+  },
+  {
+    label: "Privacy policy",
+    link: "#",
+  },
+];
+</script>

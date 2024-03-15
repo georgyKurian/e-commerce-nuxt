@@ -9,8 +9,9 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
+  sourcemap: true,
   imports: {
-    dirs: ["store", "types"],
+    dirs: ["store", "types", "autoImports", "@vueuse/nuxt"],
   },
   alias: {
     "~": "/<srcDir>",
@@ -22,7 +23,7 @@ export default defineNuxtConfig({
     types: "/<srcDir>/types",
     images: fileURLToPath(new URL("./assets", import.meta.url)),
   },
-  modules: ["@nuxt/devtools", "@pinia/nuxt"],
+  modules: ["@nuxt/devtools", "@pinia/nuxt", "@nuxtjs/tailwindcss"],
   extends: ["nuxt-seo-kit"],
   routeRules: {
     "/**": { robots: "index, follow" },

@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 const useProductsStore = defineStore("products", {
-  state: (): ProductStore => ({
+  state: (): typeof ProductStore => ({
     productInfo: {},
     items: [
       {
