@@ -60,32 +60,40 @@
         </h3>
       </header>
       <div id="promoModalDesc" class="mt-2 w-full">
-        <form class="px-3 py-2">
-          <Input
+        <form class="px-3 py-2 space-y-4">
+          <FormInput
             label="Email address"
             type="email"
             class="form-control"
-            placeholder="email~example.com"
+            placeholder="email"
             required
           />
 
-          <Input
-            label="Password"
-            type="password"
-            placeholder="email~example.com"
-            required
-          />
-
-          <div class="form-check">
-            <Input label="Remember me" type="checkbox" required />
+          <div>
+            <FormInput
+              label="Password"
+              type="password"
+              placeholder="password"
+              autocomplete="current-password"
+              required
+            />
+            <NuxtLink
+              href="/forgot-password"
+              class="text-primary-700 block text-sm mt-1"
+            >
+              Reset your password?
+            </NuxtLink>
           </div>
-          <button type="submit" class="btn-xl btn-success mt-3">Sign in</button>
+          <SfButton @click="close" class="w-full mt-8">Continue</SfButton>
+          <div class="text-center text-sm">
+            Don't have an account?
+            <NuxtLink href="/register" class="text-primary-700">
+              Register
+            </NuxtLink>
+          </div>
         </form>
       </div>
-      <footer class="flex justify-end gap-4 mt-4">
-        <SfButton variant="secondary" @click="close">Skip</SfButton>
-        <SfButton @click="close">Yes!</SfButton>
-      </footer>
+      <footer class="flex justify-end gap-4 mt-4"></footer>
     </SfModal>
   </transition>
 </template>
@@ -97,7 +105,6 @@ import {
   SfIconClose,
   SfIconPerson,
 } from "@storefront-ui/vue";
-import Input from "../Form/Input.vue";
 
 const { isOpen, open, close } = useDisclosure({ initialValue: false });
 </script>
