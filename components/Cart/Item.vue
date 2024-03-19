@@ -1,7 +1,7 @@
 <template>
   <div class="col4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
     <img
-      :src="`~/assets/${item.img}`"
+      :src="`/images/products/${item.img}`"
       style="width: 90px"
       alt="cart-item"
       title="cart-item"
@@ -25,7 +25,7 @@
 const mainStore = useMainStore();
 
 defineProps<{
-  item: Product;
+  item: typeof Product;
 }>();
 </script>
 

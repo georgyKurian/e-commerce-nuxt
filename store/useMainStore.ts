@@ -15,6 +15,8 @@ const useMainStore = defineStore("main", {
   }),
   getters: {
     cartItemsCount: ({ cart }): number => cart.length,
+    cartItemsCountText: ({ cart }): string =>
+      cart.length > 100 ? "99+" : cart.length.toString(),
     cartTotalPrice: ({ cart }): number | undefined => {
       if (cart.length !== 1) {
         const sum = cart?.reduce((acc: number, obj: any) => {

@@ -1,58 +1,52 @@
 <template>
-  <div class="container py-5" style="padding-top: 70px">
+  <div v-if="item.product" class="container py-5" style="padding-top: 70px">
     <!-- TODO dont allow accessing of the route to this page '/info' except if there is info to display -->
-    <DetailsBreadcrumb :details="item.details" />
-    <DetailsBox :item="item.details" />
+    <DetailsBreadcrumb :product="item.product" />
+    <div class="md:flex item-center justify-between gap-4">
+      <div class="w-1/2">
+        <ProductsGallery :product="item.product" />
+      </div>
+      <div>
+        <DetailsBox :item="item.product" />
+      </div>
+    </div>
     <DetailsText />
 
     <div class="related-item">
       <hr />
       <h6 class="pb-4">RELATED PRODUCTS</h6>
       <ClientOnly>
-        <ProductsCard :cards="sliceItems" />
+        <ProductsSlider :products="relatedProducts" />
       </ClientOnly>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const store = useProductsStore();
+const productStore = useProductsStore();
 const route = useRoute();
 
 interface Item {
-  details: Product;
-  relatedItems: Product[];
+  product: typeof Product;
+  relatedItems: (typeof Product)[];
 }
 
-const item: Item = reactive({
-  details: {},
+const item = reactive({
+  product: null,
   relatedItems: [],
 });
 
 onMounted(() => {
   let itemId = Number(route.params.id);
-  item.details = store.items[itemId];
+  item.product = productStore.items[itemId];
 });
 
-const sliceItems = computed(() => {
+const quantity = ref(1);
+const relatedProducts = computed(() => {
   for (let i = 0; i < 3; i++) {
-    const randomIndex = Math.floor(Math.random() * store.items.length);
-    item.relatedItems.push(store.items[randomIndex]);
+    const randomIndex = Math.floor(Math.random() * productStore.items.length);
+    item.relatedItems.push(productStore.items[randomIndex]);
   }
   return item.relatedItems;
 });
 </script>
-
-<style scoped>
-hr {
-  width: 50px;
-  border-bottom: 1px solid black;
-}
-
-.related-item {
-  padding-left: 8rem;
-  padding-right: 8rem;
-  height: auto;
-  text-align: center;
-}
-</style>

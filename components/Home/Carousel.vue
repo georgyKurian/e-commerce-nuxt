@@ -27,7 +27,7 @@
         <div class="carousel-item active">
           <img
             class="img-fluid"
-            src="~/assets/jum1.jpg"
+            src="/images/jum1.jpg"
             alt="First-slide"
             title="First-slide"
           />
@@ -35,7 +35,7 @@
         <div class="carousel-item">
           <img
             class="img-fluid"
-            src="~/assets/jum2.jpg"
+            src="/images/jum2.jpg"
             alt="Second-slide"
             title="Second-slide"
           />
@@ -43,7 +43,7 @@
         <div class="carousel-item">
           <img
             class="img-fluid"
-            src="~/assets/jum3.jpg"
+            src="/images/jum3.jpg"
             alt="Third-slide"
             title="Third-slide"
           />

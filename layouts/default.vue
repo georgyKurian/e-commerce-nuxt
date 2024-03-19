@@ -2,7 +2,9 @@
   <div id="app">
     <SeoKit />
     <Header />
-    <slot />
+    <div id="layout" class="w-9/12 mx-auto">
+      <slot />
+    </div>
     <Newsletter v-if="route.path != '/contact'" />
     <Footer />
   </div>
@@ -15,7 +17,7 @@ useHead({
   title: "V-Store",
   meta: [
     { property: "og:title", content: `V-Store - ${route.meta.title}` },
-    { property: "og:image", content: "~/assets/jum1.jpg" },
+    { property: "og:image", content: "/images/jum1.jpg" },
   ],
   link: [
     {

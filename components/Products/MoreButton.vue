@@ -1,19 +1,16 @@
 <template>
-    <div class="d-flex justify-content-center mx-5 mx-sm-0 pt-1">
-        <button type="button" @click="$emit('incrementCards')" class="flex-fill btn btn-outline-secondary">More
-            +</button>
-    </div>
+  <SfButton
+    type="button"
+    variant="secondary"
+    @click="$emit('incrementCards')"
+    class="w-full"
+    >More +</SfButton
+  >
 </template>
 <script setup lang="ts">
+import { SfButton } from "@storefront-ui/vue";
 
 defineEmits<{
-    (e: 'incrementCards'): void
-}>()
-
+  (e: "incrementCards"): void;
+}>();
 </script>
-
-<style scoped>
-.btn-outline-secondary {
-    border-radius: 0 !important;
-}
-</style>

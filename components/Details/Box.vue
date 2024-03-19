@@ -1,44 +1,24 @@
 <template>
   <div>
     <div class="row mb-5">
-      <div class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <img class="img-fluid" :src="`~/assets/${item.img}`" />
-      </div>
-
       <div
         class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center justify-content-start"
       >
         <div class="info pt-xl-0 pt-lg-0 pt-5">
-          <span class="float-left pr-3">★★★★★</span>
-          <h6 style="width: 190px">3 reviews</h6>
-          <h1 class="font-weight-bold text-uppercase pt-3">{{ item.title }}</h1>
-          <h4><price :value="item.price" class="card-text" /></h4>
-          <br /><br /><br />
-          <div class="control number text-center">
-            <button
-              class="decrement-button"
-              @click="decrememnt"
-              style="
-                border-right: 0.2px solid lightgrey;
-                float: left;
-                margin-right: 11px;
-              "
-            >
-              −
-            </button>
-            <span>{{ quantity }}</span>
-            <button
-              class="increment-button"
-              @click="incrememnt"
-              style="border-left: 0.2px solid lightgrey; margin-left: 16px"
-            >
-              +
-            </button>
-            <br /><br />
+          <h1 class="text-3xl font-bold font-weight-bold text-uppercase pt-3">
+            {{ item.title }}
+          </h1>
+          <div class="flex flex-col">
+            <SfRating :value="3.5" :halfIncrement="true" />
           </div>
-          <button class="add-to-cart-button" @click="addtoCart(item)">
-            ADD TO CART
-          </button>
+          <h6 style="width: 190px">3 reviews</h6>
+          <h4 class="my-4">
+            <Price :value="item.price" class="font-bold text-xl" />
+          </h4>
+          <ProductsQuantity v-model="quantity" />
+          <SfButton class="w-full my-4" @click="addtoCart(item)">
+            Add To Cart
+          </SfButton>
         </div>
       </div>
     </div>
@@ -46,21 +26,25 @@
 </template>
 
 <script setup lang="ts">
+import { SfButton, SfRating } from "@storefront-ui/vue";
+
 const mainStore = useMainStore();
+const quantity: number | string = defineModel<number>("quantity", {
+  type: Number,
+  default: 1,
+});
 
 defineProps<{
-  item: Product;
+  item: typeof Product;
 }>();
-
-const quantity = ref(1);
-
-const incrememnt = () => (quantity.value < 9 ? quantity.value++ : 0);
-const decrememnt = () => (quantity.value > 1 ? quantity.value-- : 0);
 
 function addtoCart(item: object) {
   for (var i = 0; i < quantity.value; i++) {
     mainStore.addToCart(item);
   }
+}
+function imageUrl(file: string) {
+  return `/images/products/${file}`;
 }
 </script>
 
