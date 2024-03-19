@@ -23,7 +23,12 @@ export default defineNuxtConfig({
     types: "/<srcDir>/types",
     images: fileURLToPath(new URL("./assets", import.meta.url)),
   },
-  modules: ["@nuxt/devtools", "@pinia/nuxt", "@nuxtjs/tailwindcss"],
+  modules: [
+    "@nuxt/devtools",
+    "@pinia/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxt/image",
+  ],
   extends: ["nuxt-seo-kit"],
   routeRules: {
     "/**": { robots: "index, follow" },

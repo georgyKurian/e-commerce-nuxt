@@ -1,47 +1,24 @@
 <template>
-  <div>
-    <nav class="row justify-content-start" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <NuxtLink to="/">Home</NuxtLink>
-        </li>
-        <li class="breadcrumb-item">
-          <NuxtLink to="/products">Products</NuxtLink>
-        </li>
-        <li class="breadcrumb-item">
-          <NuxtLink to="/products">{{ product.type }}</NuxtLink>
-        </li>
-        <li class="breadcrumb-item active">{{ product.title }}</li>
-      </ol>
-    </nav>
-  </div>
+  <BreadCrumbs :path="productPath" />
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import BreadCrumbs from "../BreadCrumbs.vue";
+
+const props = defineProps<{
   product: typeof Product;
 }>();
+
+const productPath = computed(() => {
+  return [
+    {
+      name: "Products",
+      link: "/products",
+    },
+    {
+      name: props.product.title,
+      link: `/products/${props.product.id}`,
+    },
+  ];
+});
 </script>
-
-<style scoped lang="scss">
-.breadcrumb {
-  background: inherit;
-
-  li {
-    a {
-      text-decoration: none;
-      color: #2c3539 !important;
-      font-size: 18px;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .active {
-    text-decoration: none !important;
-    color: #f2be00 !important;
-  }
-}
-</style>

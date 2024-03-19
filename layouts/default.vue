@@ -17,7 +17,7 @@ useHead({
   title: "V-Store",
   meta: [
     { property: "og:title", content: `V-Store - ${route.meta.title}` },
-    { property: "og:image", content: "~/assets/images/jum1.jpg" },
+    { property: "og:image", content: "/images/jum1.jpg" },
   ],
   link: [
     {

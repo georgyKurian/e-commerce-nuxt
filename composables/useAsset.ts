@@ -4,5 +4,5 @@ export default function (path: string): string {
     import: "default",
   });
   // @ts-expect-error: wrong type info
-  return assets["/assets/images/" + path];
+  return assets["/images/" + path];
 }

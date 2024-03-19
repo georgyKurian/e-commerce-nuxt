@@ -21,14 +21,10 @@
           >
             <picture>
               <source
-                srcset="~/assets/images/fi-logo.svg"
+                srcset="/images/fi-logo.svg"
                 media="(min-width: 1024px)"
               />
-              <img
-                src="~/assets/images/fi-logo.svg"
-                alt="Sf Logo"
-                width="500"
-              />
+              <img src="/images/fi-logo.svg" alt="Sf Logo" width="500" />
             </picture>
           </a>
         </div>

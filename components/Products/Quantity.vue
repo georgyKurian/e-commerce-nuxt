@@ -1,32 +1,49 @@
 <template>
   <div>
-    <SfInput
-      v-if="modelValue > maxDropDownValue"
-      v-model="modelValue"
-      type="number"
-      class="sf-quantity__input"
-      :min="1"
-      :max="max"
-    />
-    <div v-else class="flex flex-col gap-y-6 font-body">
-      <label>
-        <span class="pb-1 text-sm font-medium text-neutral-900"> Label </span>
-        <SfSelect v-model="modelValue" size="sm" placeholder="-- Select --">
-          <option v-for="index in maxDropDownValue" :key="index" :value="index">
+    <div
+      v-if="modelValue < maxDropDownValue"
+      class="flex flex-col gap-y-6 font-body"
+    >
+      <label class="relative">
+        <span class="pb-1 text-sm font-medium text-neutral-900 absolute -z-[1]">
+          Quantity
+        </span>
+        <SfSelect
+          v-model="modelValue"
+          size="sm"
+          placeholder="-- Select --"
+          wrapper-class="absolute -z-1"
+        >
+          <option
+            v-for="index in maxDropDownValue - 1"
+            :key="index"
+            :value="index"
+          >
             {{ index }}
           </option>
-          <option :value="`${maxDropDownValue + 1}+`">
-            {{ `${maxDropDownValue + 1}+` }}
+          <option :value="`${maxDropDownValue}+`">
+            {{ `${maxDropDownValue}+` }}
           </option>
         </SfSelect>
       </label>
     </div>
+    <Input
+      v-else
+      v-model="modelValue"
+      label="Quantity"
+      type="number"
+      class="w-full"
+      :min="1"
+      :max="max"
+      :hide-label="true"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { SfSelect, SfInput } from "@storefront-ui/vue";
-const maxDropDownValue = 19;
+import { SfSelect } from "@storefront-ui/vue";
+import Input from "../Form/Input.vue";
+const maxDropDownValue = 20;
 
 const props = defineProps<{
   max?: number;
@@ -35,9 +52,8 @@ const props = defineProps<{
 const modelValue = defineModel({
   required: true,
   set(value) {
-    debugger;
-    if (value == `${maxDropDownValue + 1}+`) {
-      return maxDropDownValue + 1;
+    if (value == `${maxDropDownValue}+`) {
+      return maxDropDownValue;
     }
     return value;
   },

@@ -1,23 +1,29 @@
 <template>
-  <label>
-    <span
-      :class="[
-        'text-sm font-medium',
-        { 'cursor-not-allowed text-disabled-500': props.disabled },
-      ]"
-    >
-      {{ label }}
-      <span v-if="required" class="text-red-500">*</span>
-    </span>
-    <SfInput
-      v-model="modelValue"
-      :type="props.type"
-      :wrapper-class="{
-        'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500':
-          props.disabled || props.readonly,
-      }"
-    />
-  </label>
+  <div class="relative">
+    <label>
+      <span
+        :class="[
+          'text-sm font-medium',
+          {
+            'cursor-not-allowed text-disabled-500': props.disabled,
+            'absolute -z-[1]': props.hideLabel,
+          },
+        ]"
+      >
+        {{ label }}
+        <span v-if="required" class="text-red-500">*</span>
+      </span>
+      <SfInput
+        v-model="modelValue"
+        :type="props.type"
+        :wrapper-class="{
+          'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500':
+            props.disabled || props.readonly,
+          'absolute z-0': true,
+        }"
+      />
+    </label>
+  </div>
   <div class="flex justify-between">
     <div>
       <p
@@ -71,10 +77,11 @@ const props = defineProps<{
   requiredText?: string;
   helpText?: string;
   label?: string;
+  hideLabel?: boolean;
   errorText?: string;
 }>();
 
-const modelValue = defineModel();
+const modelValue: number | string = defineModel<string, number>();
 
 const isAboveLimit = computed(() =>
   props.characterLimit ? modelValue.length > props.characterLimit : false

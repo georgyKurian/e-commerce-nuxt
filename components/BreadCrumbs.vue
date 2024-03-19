@@ -7,6 +7,7 @@
           strategy="absolute"
           placement="bottom-start"
           @update:model-value="close"
+          class="z-1"
         >
           <template #trigger>
             <SfButton
@@ -24,13 +25,14 @@
               </template>
             </SfButton>
           </template>
-          <div class="px-4 py-2 rounded-md shadow-md border-neutral-100">
+          <div class="px-4 py-2 rounded-md shadow-md border-neutral-10">
             <li
               v-for="item in breadcrumbs"
               :key="item.name"
               class="py-2 last-of-type:hidden"
             >
               <SfLink
+                :tag="NuxtLink"
                 :href="item.link"
                 variant="secondary"
                 class="leading-5 no-underline text-inherit hover:underline active:underline whitespace-nowrap outline-secondary-600"
@@ -73,17 +75,21 @@ import {
 } from "@storefront-ui/vue";
 import { ref } from "vue";
 
-const breadcrumbs = [
-  {
-    name: "Home",
-    link: "#",
-  },
-  { name: "Page 2", link: "#" },
-  { name: "Page 3", link: "#" },
-  { name: "Page 4", link: "#" },
-  { name: "Page 5", link: "#" },
-];
+const props = defineProps<{
+  path: {
+    type: { name: string; link: string }[];
+  };
+}>();
 
+const breadcrumbs = computed(() => {
+  return [
+    {
+      name: "Home",
+      path: "/",
+    },
+    ...props.path,
+  ];
+});
 const dropdownOpened = ref(false);
 const close = () => {
   dropdownOpened.value = false;

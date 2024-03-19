@@ -8,8 +8,8 @@
         :tag="NuxtLink"
         class="block"
       >
-        <img
-          :src="imageUrl(props.product.img)"
+        <NuxtImg
+          :src="`images/products/${props.product.img}`"
           alt="Great product"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
@@ -82,6 +82,6 @@ const props = defineProps<{
 }>();
 
 function imageUrl(file: string) {
-  return `_nuxt/assets/images/${file}`;
+  return `/images/${file}`;
 }
 </script>

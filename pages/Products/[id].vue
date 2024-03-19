@@ -8,7 +8,6 @@
       </div>
       <div>
         <DetailsBox :item="item.product" />
-        <ProductsQuantity v-model="quantity" />
       </div>
     </div>
     <DetailsText />
@@ -17,11 +16,7 @@
       <hr />
       <h6 class="pb-4">RELATED PRODUCTS</h6>
       <ClientOnly>
-        <ProductsCard
-          v-for="relatedProduct in sliceItems"
-          :key="relatedProduct.id"
-          :product="relatedProduct"
-        />
+        <ProductsSlider :products="relatedProducts" />
       </ClientOnly>
     </div>
   </div>
@@ -47,7 +42,7 @@ onMounted(() => {
 });
 
 const quantity = ref(1);
-const sliceItems = computed(() => {
+const relatedProducts = computed(() => {
   for (let i = 0; i < 3; i++) {
     const randomIndex = Math.floor(Math.random() * productStore.items.length);
     item.relatedItems.push(productStore.items[randomIndex]);
