@@ -42,7 +42,47 @@ const useProductsStore = defineStore("products", {
         title: "Camel Back",
         price: 243,
         color: "white",
-        type: "sofa",
+        type: "equipment",
+        in_stock: true,
+        quantity: 5,
+        stores: [
+          {
+            id: 1,
+            name: "Hamilton Store",
+            quantity: 5,
+            google_store_code: "100",
+            address: {
+              street: "123 Main St",
+              city: "Hamilton",
+              province: "ON",
+              postal_code: "L8J 2B7",
+            },
+          },
+          {
+            id: 2,
+            name: "Burlington Store",
+            quantity: 5,
+            google_store_code: "101",
+            address: {
+              street: "123 Main St",
+              city: "Burlington",
+              province: "ON",
+              postal_code: "L9J 2B7",
+            },
+          },
+          {
+            id: 3,
+            name: "York Training Center",
+            quantity: 5,
+            google_store_code: "102",
+            address: {
+              street: "123 Main St",
+              city: "York",
+              province: "ON",
+              postal_code: "L3J 2B7",
+            },
+          },
+        ],
       },
       {
         id: 5,

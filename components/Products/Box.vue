@@ -24,10 +24,12 @@
             auto-apply
             class="mb-2"
           />
+
           <ProductsQuantity v-model="quantity" />
           <SfButton class="w-full my-4" @click="addtoCart(item)">
             Add To Cart
           </SfButton>
+          <ProductsInventoryDetails :product="item" />
         </div>
       </div>
     </div>

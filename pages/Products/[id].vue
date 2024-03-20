@@ -7,7 +7,7 @@
         <ProductsGallery :product="item.product" />
       </div>
       <div>
-        <DetailsBox :item="item.product" />
+        <ProductsBox :item="item.product" />
       </div>
     </div>
     <DetailsText />
