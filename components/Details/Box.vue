@@ -15,6 +15,15 @@
           <h4 class="my-4">
             <Price :value="item.price" class="font-bold text-xl" />
           </h4>
+          <Datepicker
+            v-if="item.type === 'online'"
+            v-model="date"
+            :allowed-dates="allowedDates"
+            format="MMM d, yyyy"
+            :enable-time-picker="false"
+            auto-apply
+            class="mb-2"
+          />
           <ProductsQuantity v-model="quantity" />
           <SfButton class="w-full my-4" @click="addtoCart(item)">
             Add To Cart
@@ -26,7 +35,9 @@
 </template>
 
 <script setup lang="ts">
-import { SfButton, SfRating } from "@storefront-ui/vue";
+import { SfButton, SfInput, SfRating } from "@storefront-ui/vue";
+import "@vuepic/vue-datepicker/dist/main.css";
+import Datepicker from "@vuepic/vue-datepicker";
 
 const mainStore = useMainStore();
 const quantity: number | string = defineModel<number>("quantity", {
@@ -37,6 +48,12 @@ const quantity: number | string = defineModel<number>("quantity", {
 defineProps<{
   item: typeof Product;
 }>();
+
+const date = ref();
+
+const allowedDates = computed(() => {
+  return [new Date(), new Date(new Date().setDate(new Date().getDate() + 1))];
+});
 
 function addtoCart(item: object) {
   for (var i = 0; i < quantity.value; i++) {
