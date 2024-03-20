@@ -1,12 +1,11 @@
 <template>
   <main>
     <HomeCarousel />
-    <HomeAboutUs />
   </main>
 </template>
 
 <script setup>
 definePageMeta({
-  title: 'Home'
-})
+  title: "Home",
+});
 </script>

@@ -1,9 +1,11 @@
 <template>
-  <div class="container py-5" style="padding-top: 70px">
+  <Container class="py-5" style="padding-top: 70px">
     <!-- TODO dont allow accessing of the route to this page '/info' except if there is info to display -->
+
+    <h1 class="text-4xl capitalize">{{ category }}</h1>
     <ProductsBreadCrumbs />
     <ProductsGrid :category="category" />
-  </div>
+  </Container>
 </template>
 
 <script setup lang="ts">

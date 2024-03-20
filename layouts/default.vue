@@ -2,7 +2,7 @@
   <div id="app">
     <SeoKit />
     <Header />
-    <div id="layout" class="w-9/12 mx-auto">
+    <div id="layout" class="mx-auto">
       <slot />
     </div>
     <Newsletter v-if="route.path != '/contact'" />
