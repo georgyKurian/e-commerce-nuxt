@@ -20,7 +20,7 @@
       class="w-full mt-2"
       label="Select Store"
       v-model="selectedLocation"
-      placeholder="-Select store-"
+      :placeholder="$t('-Select store-')"
     >
       <option v-for="store in product.stores" :key="store.id" :value="store.id">
         {{ store.address.city }}, {{ store.address.province }}

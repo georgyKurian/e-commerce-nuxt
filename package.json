@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "^1.0.8",
     "@nuxt/image": "^1.4.0",
+    "@nuxtjs/i18n": "^8.2.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@storefront-ui/vue": "^2.6.0",
     "@vueuse/core": "^10.9.0",
@@ -28,7 +29,8 @@
     "@vuepic/vue-datepicker": "^8.3.1",
     "bootstrap": "^5.2.3",
     "pinia": "^2.0.34",
-    "sass-loader": "^14.1.1"
+    "sass-loader": "^14.1.1",
+    "vue-i18n": "^9.10.2"
   },
   "overrides": {
     "vue": "latest"

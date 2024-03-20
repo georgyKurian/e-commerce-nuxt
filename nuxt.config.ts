@@ -28,7 +28,29 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "@nuxt/image",
+    "@nuxtjs/i18n",
   ],
+  i18n: {
+    vueI18n: "./i18n.config.ts", // if you are using custom path, default
+    langDir: "./locales",
+    defaultLocale: "en",
+    locales: [
+      {
+        code: "en",
+        name: "English",
+        iso: "en-CA",
+        file: "en.json",
+        dir: "ltr",
+      },
+      {
+        code: "fr",
+        name: "Français",
+        iso: "fr-CA",
+        file: "fr.json",
+        dir: "ltr",
+      },
+    ],
+  },
   build: {
     transpile: ["@vuepic/vue-datepicker"],
   },
@@ -61,5 +83,8 @@ export default defineNuxtConfig({
       },
       addMeta: true,
     },
+  },
+  head() {
+    return this.$nuxtI18nHead({ addSeoAttributes: true });
   },
 });
