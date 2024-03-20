@@ -27,7 +27,7 @@
 
           <ProductsQuantity v-model="quantity" />
           <SfButton class="w-full my-4" @click="addtoCart(item)">
-            Add To Cart
+            {{ $t("Add To Cart") }}
           </SfButton>
           <ProductsInventoryDetails :product="item" />
         </div>
