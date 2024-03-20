@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item.product" class="container py-5" style="padding-top: 70px">
+  <Container v-if="item.product" class="py-5" style="padding-top: 70px">
     <!-- TODO dont allow accessing of the route to this page '/info' except if there is info to display -->
     <DetailsBreadcrumb :product="item.product" />
     <div class="md:flex item-center justify-between gap-4">
@@ -19,7 +19,7 @@
         <ProductsSlider :products="relatedProducts" />
       </ClientOnly>
     </div>
-  </div>
+  </Container>
 </template>
 
 <script setup lang="ts">

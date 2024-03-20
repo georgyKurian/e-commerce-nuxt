@@ -29,6 +29,9 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/image",
   ],
+  build: {
+    transpile: ["@vuepic/vue-datepicker"],
+  },
   extends: ["nuxt-seo-kit"],
   routeRules: {
     "/**": { robots: "index, follow" },

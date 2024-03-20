@@ -149,7 +149,7 @@
               :key="activeMenu.key"
               ref="megaMenuRef"
               :style="style"
-              class="hidden md:grid gap-x-6 grid-cols-4 bg-white shadow-lg p-6 left-0 right-0 outline-none"
+              class="hidden md:grid gap-x-6 grid-cols-4 bg-white shadow-lg p-6 left-0 right-0 outline-none z-10"
               tabindex="0"
               @mouseleave="close()"
               @keydown.esc="focusTrigger(index)"

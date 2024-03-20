@@ -26,7 +26,7 @@
       <div
         v-for="({ imageSrc, alt }, index) in images"
         :key="`${alt}-${index}`"
-        class="relative flex justify-center basis-full snap-center snap-always shrink-0 grow"
+        class="relative flex justify-center basis-full snap-center snap-always shrink-0 grow z-0"
       >
         <img
           class="object-cover w-auto h-full"

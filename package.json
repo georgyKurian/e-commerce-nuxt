@@ -25,6 +25,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@vercel/analytics": "^1.0.1",
+    "@vuepic/vue-datepicker": "^8.3.1",
     "bootstrap": "^5.2.3",
     "pinia": "^2.0.34",
     "sass-loader": "^14.1.1"
