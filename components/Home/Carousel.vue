@@ -1,57 +1,45 @@
 <template>
-  <section class="carousel">
-    <div id="heroControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#heroControls"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#heroControls"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#heroControls"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            class="img-fluid"
-            src="/images/jum1.jpg"
-            alt="First-slide"
-            title="First-slide"
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            class="img-fluid"
-            src="/images/jum2.jpg"
-            alt="Second-slide"
-            title="Second-slide"
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            class="img-fluid"
-            src="/images/jum3.jpg"
-            alt="Third-slide"
-            title="Third-slide"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <Container
+    class="my-4 lg:gap-6 lg:flex-no-wrap grid grid-cols-1 md:grid-cols-3 gap-4"
+  >
+    <a
+      v-for="{ title, image, link } in categories"
+      :key="title"
+      :href="link"
+      :aria-label="title"
+      class="flex-col group bg-neutral-900 h-20 md:h-64 w-full flex justify-center items-center focus-visible:outline focus-visible:outline-offset focus-visible:rounded-md text-center"
+    >
+      <span
+        class="text-center text-white font-semibold text-2xl group-hover:shadow-xl group-active:shadow-none"
+      >
+        {{ title }}
+      </span>
+    </a>
+  </Container>
 </template>
+
+<script setup lang="ts">
+const categories = [
+  {
+    title: `Online Certifications`,
+    image:
+      "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/women_category.png",
+    link: "/category/online",
+  },
+  {
+    title: `Classroom courses`,
+    image:
+      "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/men_category.png",
+    link: "/category/in-class",
+  },
+  {
+    title: `Health & Safety Consulting`,
+    image:
+      "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/kid_category.png",
+    link: "/category/consulting",
+  },
+];
+</script>
 
 <style scoped>
 .img-fluid {
