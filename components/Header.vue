@@ -57,6 +57,7 @@
           </SfInput>
         </form>
         <nav class="flex flex-nowrap justify-end items-center md:ml-10 gap-x-1">
+          <HeaderLocaleButton />
           <HeaderCartButton @open="cartState" />
           <HeaderProfileButton />
           <SfButton
