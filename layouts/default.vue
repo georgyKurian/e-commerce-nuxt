@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <div id="layout" class="mx-auto">
+    <div id="layout" class="mx-auto bg-white dark:bg-gray-800">
       <slot />
     </div>
     <Newsletter v-if="route.path != '/contact'" />
@@ -32,7 +32,6 @@ useHead({
 
 <style>
 #app {
-  background-color: #f8f8f8 !important;
   font-family: "Exo 2", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
