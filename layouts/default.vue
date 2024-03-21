@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <SeoKit />
     <Header />
     <div id="layout" class="mx-auto">
       <slot />
@@ -12,9 +11,10 @@
 
 <script setup>
 const route = useRoute();
+import { useI18n } from "#imports";
+const { t } = useI18n();
 
 useHead({
-  title: "V-Store",
   meta: [
     { property: "og:title", content: `V-Store - ${route.meta.title}` },
     { property: "og:image", content: "/images/jum1.jpg" },

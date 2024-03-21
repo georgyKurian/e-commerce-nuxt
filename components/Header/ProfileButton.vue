@@ -9,7 +9,9 @@
     <template #prefix>
       <SfIconPerson />
     </template>
-    <p class="hidden lg:inline-flex whitespace-nowrap mr-2">Log In</p>
+    <p class="hidden lg:inline-flex whitespace-nowrap mr-2">
+      {{ $t("Log In") }}
+    </p>
   </SfButton>
   <!-- Backdrop -->
   <transition
@@ -56,7 +58,7 @@
           id="promoModalTitle"
           class="font-bold typography-headline-4 md:typography-headline-3"
         >
-          Log In
+          {{ $t("Log In") }}
         </h3>
       </header>
       <div id="promoModalDesc" class="mt-2 w-full">
@@ -79,12 +81,14 @@
           <div class="form-check">
             <Input label="Remember me" type="checkbox" required />
           </div>
-          <button type="submit" class="btn-xl btn-success mt-3">Sign in</button>
+          <button type="submit" class="btn-xl btn-success mt-3">
+            {{ $t("Sign in") }}
+          </button>
         </form>
       </div>
       <footer class="flex justify-end gap-4 mt-4">
         <SfButton variant="secondary" @click="close">Skip</SfButton>
-        <SfButton @click="close">Yes!</SfButton>
+        <SfButton @click="close">{{ $t("Yes!") }}</SfButton>
       </footer>
     </SfModal>
   </transition>
@@ -97,7 +101,6 @@ import {
   SfIconClose,
   SfIconPerson,
 } from "@storefront-ui/vue";
-import Input from "../Form/Input.vue";
 
 const { isOpen, open, close } = useDisclosure({ initialValue: false });
 </script>

@@ -19,6 +19,7 @@
           class="py-2 !bg-transparent typography-text-sm font-body"
         >
           <SfLink
+            :tag="NuxtLink"
             class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
             variant="secondary"
             :href="link"
@@ -38,6 +39,7 @@
         <component :is="icon" size="lg" />
         <p class="py-1 my-2 font-medium typography-text-lg font-body">
           <SfLink
+            :tag="NuxtLink"
             variant="secondary"
             class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
             :href="link"
@@ -75,6 +77,7 @@
         >
           <SfLink
             v-for="{ label, link } in bottomLinks"
+            :tag="NuxtLink"
             :key="label"
             variant="secondary"
             class="text-white no-underline typography-text-sm active:text-white active:underline hover:text-white hover:underline"

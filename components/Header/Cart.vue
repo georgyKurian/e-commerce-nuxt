@@ -5,7 +5,7 @@
         <p class="text-center mt-4 pb-2 h3">Cart</p>
         <hr />
         <Notification v-if="!store.cartItemsCount">
-          Your cart is empty, try to Add stuff.
+          {{ $t("Your cart is empty, try to Add stuff.") }}
         </Notification>
         <div class="row" v-for="item in store.cart" :key="item.id">
           <CartItem :item="item" />

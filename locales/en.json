@@ -1,5 +1,22 @@
 {
   "welcome": "welcome",
   "Add To Cart": "",
-  "-Select store-": null
+  "-Select store-": null,
+  "Subtotal": null,
+  "({itemsCount} items)": null,
+  "Contact-Us": null,
+  "RELATED PRODUCTS": null,
+  "Sorry, we can't find any product with this features": null,
+  "Products": null,
+  "Your cart is empty, try to Add stuff.": null,
+  "Log In": null,
+  "Sign in": null,
+  "Yes!": null,
+  "CATAGORIES": null,
+  "In Stock Online": null,
+  "Out of Stock Online": null,
+  "Store details": null,
+  "Select Store": null,
+  ":city, :province": null,
+  "{city}, {province}": null
 }
