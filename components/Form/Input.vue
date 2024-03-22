@@ -56,8 +56,8 @@
           disabled
             ? 'text-disabled-500'
             : isAboveLimit
-            ? 'text-negative-700 font-medium'
-            : 'text-neutral-500',
+              ? 'text-negative-700 font-medium'
+              : 'text-neutral-500',
         ]"
       >
         {{ charsCount }}
@@ -88,11 +88,11 @@ const props = defineProps<{
 const modelValue: number | string = defineModel<string, number>();
 
 const isAboveLimit = computed(() =>
-  props.characterLimit ? modelValue.length > props.characterLimit : false
+  props.characterLimit ? modelValue.length > props.characterLimit : false,
 );
 const charsCount = computed(() =>
   props.characterLimit
     ? props.characterLimit - modelValue.length
-    : modelValue.length
+    : modelValue.length,
 );
 </script>
