@@ -80,6 +80,7 @@ import {
   SfIconChevronRight,
 } from "@storefront-ui/vue";
 import { ref } from "vue";
+import { NuxtLink } from "#components";
 
 const props = defineProps<{
   path: {

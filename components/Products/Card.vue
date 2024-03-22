@@ -75,6 +75,8 @@ import {
   SfIconShoppingCart,
   SfIconFavorite,
 } from "@storefront-ui/vue";
+import { NuxtLink } from "#components";
+
 const mainStore = useMainStore();
 
 const props = defineProps<{

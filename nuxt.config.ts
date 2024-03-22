@@ -83,4 +83,21 @@ export default defineNuxtConfig({
   head() {
     return this.$nuxtI18nHead({ addSeoAttributes: true });
   },
+  sitemap: {
+    sitemaps: {
+      pages: {
+        includeAppSources: true,
+        include: ["/**"],
+        exclude: ["/products/**"],
+      },
+      products: {
+        sources: ["/api/__sitemap__/urls"],
+      },
+    },
+  },
+  devtools: {
+    timeline: {
+      enabled: true,
+    },
+  },
 });
