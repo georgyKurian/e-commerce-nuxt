@@ -1,0 +1,21 @@
+name: Run Tests
+
+on:
+  push:
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    name: Runs Prettier to Check Styles
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+      - name: Install NPM Dependencies
+        run: npm ci
+      - name: Check for Styles
+        run: npm run check-style
