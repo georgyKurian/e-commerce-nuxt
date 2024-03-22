@@ -1,16 +1,10 @@
 <template>
-  <SfButton
-    type="button"
-    variant="secondary"
-    @click="$emit('incrementCards')"
-    class="w-full"
-    >More +</SfButton
-  >
+  <SfButton type="button" variant="secondary" class="w-full" @click="$emit('incrementCards')"> More + </SfButton>
 </template>
 <script setup lang="ts">
-import { SfButton } from "@storefront-ui/vue";
+import { SfButton } from '@storefront-ui/vue';
 
 defineEmits<{
-  (e: "incrementCards"): void;
+  (e: 'incrementCards'): void;
 }>();
 </script>

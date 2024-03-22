@@ -70,29 +70,24 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {
-  SfScrollable,
-  SfButton,
-  SfIconChevronLeft,
-  SfIconChevronRight,
-} from "@storefront-ui/vue";
-import { ref } from "vue";
+import { SfScrollable, SfButton, SfIconChevronLeft, SfIconChevronRight } from '@storefront-ui/vue';
+import { ref } from 'vue';
 
 const withBase = (filepath: string) =>
   `https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/gallery/${filepath}`;
 
 const images = [
-  { imageSrc: withBase("gallery_1.png"), alt: "backpack1" },
-  { imageSrc: withBase("gallery_2.png"), alt: "backpack2" },
-  { imageSrc: withBase("gallery_3.png"), alt: "backpack3" },
-  { imageSrc: withBase("gallery_4.png"), alt: "backpack4" },
-  { imageSrc: withBase("gallery_5.png"), alt: "backpack5" },
-  { imageSrc: withBase("gallery_6.png"), alt: "backpack6" },
-  { imageSrc: withBase("gallery_7.png"), alt: "backpack7" },
-  { imageSrc: withBase("gallery_8.png"), alt: "backpack8" },
-  { imageSrc: withBase("gallery_9.png"), alt: "backpack9" },
-  { imageSrc: withBase("gallery_10.png"), alt: "backpack10" },
-  { imageSrc: withBase("gallery_11.png"), alt: "backpack11" },
+  { imageSrc: withBase('gallery_1.png'), alt: 'backpack1' },
+  { imageSrc: withBase('gallery_2.png'), alt: 'backpack2' },
+  { imageSrc: withBase('gallery_3.png'), alt: 'backpack3' },
+  { imageSrc: withBase('gallery_4.png'), alt: 'backpack4' },
+  { imageSrc: withBase('gallery_5.png'), alt: 'backpack5' },
+  { imageSrc: withBase('gallery_6.png'), alt: 'backpack6' },
+  { imageSrc: withBase('gallery_7.png'), alt: 'backpack7' },
+  { imageSrc: withBase('gallery_8.png'), alt: 'backpack8' },
+  { imageSrc: withBase('gallery_9.png'), alt: 'backpack9' },
+  { imageSrc: withBase('gallery_10.png'), alt: 'backpack10' },
+  { imageSrc: withBase('gallery_11.png'), alt: 'backpack11' },
 ];
 
 const activeIndex = ref(0);

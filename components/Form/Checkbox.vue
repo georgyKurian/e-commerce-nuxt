@@ -6,8 +6,7 @@
       value="value"
       class="peer"
       :wrapper-class="{
-        'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500':
-          props.disabled || props.readonly,
+        'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500': props.disabled || props.readonly,
       }"
     />
     <label
@@ -20,18 +19,12 @@
   </div>
   <div class="flex justify-between ml-8">
     <div>
-      <p
-        v-if="props.invalid && !props.disabled"
-        class="text-sm text-negative-700 font-medium mt-0.5"
-      >
+      <p v-if="props.invalid && !props.disabled" class="text-sm text-negative-700 font-medium mt-0.5">
         {{ props.errorText }}
       </p>
       <p
         v-if="props.helpText"
-        :class="[
-          'typography-hint-xs mt-0.5',
-          props.disabled ? 'text-disabled-500' : 'text-neutral-500',
-        ]"
+        :class="['typography-hint-xs mt-0.5', props.disabled ? 'text-disabled-500' : 'text-neutral-500']"
       >
         {{ helpText }}
       </p>
@@ -45,8 +38,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { SfCheckbox } from "@storefront-ui/vue";
-import { ref } from "vue";
+import { SfCheckbox } from '@storefront-ui/vue';
+import { ref } from 'vue';
 
 const props = defineProps<{
   readonly?: boolean;

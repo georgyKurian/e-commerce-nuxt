@@ -14,7 +14,9 @@
 
     <div class="related-item">
       <hr />
-      <h6 class="pb-4">{{ $t("RELATED PRODUCTS") }}</h6>
+      <h6 class="pb-4">
+        {{ $t('RELATED PRODUCTS') }}
+      </h6>
       <ClientOnly>
         <ProductsSlider :products="relatedProducts" />
       </ClientOnly>
@@ -35,7 +37,7 @@ useHead({
   title: product?.title,
 });
 
-let quantity = ref(1);
+const quantity = ref(1);
 const relatedProducts = computed(() => {
   const relatedItems = [];
   for (let i = 0; i < 3; i++) {

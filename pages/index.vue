@@ -6,6 +6,6 @@
 
 <script setup>
 definePageMeta({
-  title: "Home",
+  title: 'Home',
 });
 </script>

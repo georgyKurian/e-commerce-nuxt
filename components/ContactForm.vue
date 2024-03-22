@@ -2,20 +2,10 @@
   <section>
     <div class="container-fluid py-5">
       <div class="row d-flex">
-        <div
-          class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 order-sm-0 order-12"
-          style="margin-right: -120px"
-        >
-          <img
-            class="img-fluid"
-            src="/images/speaker.jpg"
-            alt="speaker"
-            title="speaker"
-          />
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 order-sm-0 order-12" style="margin-right: -120px">
+          <img class="img-fluid" src="/images/speaker.jpg" alt="speaker" title="speaker" />
         </div>
-        <div
-          class="col-12 col-xl-6 col-lg-5 col-md-6 col-sm-12 order-first order-xl-0"
-        >
+        <div class="col-12 col-xl-6 col-lg-5 col-md-6 col-sm-12 order-first order-xl-0">
           <h1>Hello there</h1>
           <h2 style="color: grey">got a thought to discuss?</h2>
           <form>
@@ -28,12 +18,7 @@
               <label class="label" for="E-mail">E-mail</label>
             </div>
             <div class="form-group">
-              <textarea
-                class="form-control"
-                style="overflow: hidden; height: 130px"
-                rows="3"
-                required
-              ></textarea>
+              <textarea class="form-control" style="overflow: hidden; height: 130px" rows="3" required />
               <label class="label" for="Message">Message</label>
             </div>
             <button class="btn btn-light" href="#" role="button">submit</button>

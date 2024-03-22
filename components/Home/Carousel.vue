@@ -1,17 +1,13 @@
 <template>
-  <Container
-    class="my-4 lg:gap-6 lg:flex-no-wrap grid grid-cols-1 md:grid-cols-3 gap-4"
-  >
+  <Container class="my-4 lg:gap-6 lg:flex-no-wrap grid grid-cols-1 md:grid-cols-3 gap-4">
     <a
-      v-for="{ title, image, link } in categories"
+      v-for="{ title, link } in categories"
       :key="title"
       :href="link"
       :aria-label="title"
       class="flex-col group bg-neutral-900 h-20 md:h-64 w-full flex justify-center items-center focus-visible:outline focus-visible:outline-offset focus-visible:rounded-md text-center"
     >
-      <span
-        class="text-center text-white font-semibold text-2xl group-hover:shadow-xl group-active:shadow-none"
-      >
+      <span class="text-center text-white font-semibold text-2xl group-hover:shadow-xl group-active:shadow-none">
         {{ title }}
       </span>
     </a>
@@ -22,21 +18,18 @@
 const categories = [
   {
     title: `Online Certifications`,
-    image:
-      "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/women_category.png",
-    link: "/category/online",
+    image: 'https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/women_category.png',
+    link: '/category/online',
   },
   {
     title: `Classroom courses`,
-    image:
-      "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/men_category.png",
-    link: "/category/in-class",
+    image: 'https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/men_category.png',
+    link: '/category/in-class',
   },
   {
     title: `Health & Safety Consulting`,
-    image:
-      "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/kid_category.png",
-    link: "/category/consulting",
+    image: 'https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/kid_category.png',
+    link: '/category/consulting',
   },
 ];
 </script>

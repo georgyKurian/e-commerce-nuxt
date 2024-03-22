@@ -10,22 +10,27 @@
     "postinstall": "nuxt prepare",
     "translate": "i18next-scanner --config i18next-scanner.config.js",
     "check-style": "prettier -c './**/*.{vue,ts,json,js,css}' ",
-    "fix-style": "prettier --write './**/*.{vue,ts,json,js,css}' "
+    "fix-style": "prettier --write './**/*.{vue,ts,json,js,css}' ",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.8",
     "@nuxt/image": "^1.4.0",
+    "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/i18n": "^8.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.9",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@storefront-ui/vue": "^2.6.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "i18next-scanner": "^4.4.0",
     "nuxt": "^3.5.3",
     "sass": "^1.71.1",
     "typescript": "^5.3.3",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.0.7"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",

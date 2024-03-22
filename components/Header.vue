@@ -20,19 +20,12 @@
             class="flex shrink-0 w-8 h-8 lg:w-[12.5rem] lg:h-[1.75rem] items-center mr-auto text-white md:mr-10 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm"
           >
             <picture>
-              <source
-                srcset="/images/fi-logo.svg"
-                media="(min-width: 1024px)"
-              />
+              <source srcset="/images/fi-logo.svg" media="(min-width: 1024px)" />
               <img src="/images/fi-logo.svg" alt="Sf Logo" width="500" />
             </picture>
           </a>
         </div>
-        <form
-          role="search"
-          class="hidden md:flex flex-[100%] ml-10"
-          @submit.prevent="search"
-        >
+        <form role="search" class="hidden md:flex flex-[100%] ml-10" @submit.prevent="search">
           <SfInput
             v-model="inputValue"
             :name="$t('Search')"
@@ -73,22 +66,15 @@
             <template #prefix>
               <Component :is="actionItem.icon" />
             </template>
-            <p
-              v-if="actionItem.role === 'login'"
-              class="hidden lg:inline-flex whitespace-nowrap mr-2"
-            >
+            <p v-if="actionItem.role === 'login'" class="hidden lg:inline-flex whitespace-nowrap mr-2">
               {{ actionItem.label }}
             </p>
           </SfButton>
         </nav>
-        <form
-          role="search"
-          class="flex md:hidden flex-[100%] my-2"
-          @submit.prevent="search"
-        >
+        <form role="search" class="flex md:hidden flex-[100%] my-2" @submit.prevent="search">
           <SfInput
-            :name="$t('Search')"
             v-model="inputValue"
+            :name="$t('Search')"
             type="search"
             class="[&::-webkit-search-cancel-button]:appearance-none"
             placeholder="Search"
@@ -113,7 +99,7 @@
         <!--User Modal-->
         <!-- <HeaderUserModal /> -->
         <!--Cart Component-->
-        <HeaderCart :is-open="cart" @closeCart="cartState" />
+        <HeaderCart :is-open="cart" @close-cart="cartState" />
       </div>
       <!-- Desktop dropdown -->
       <nav ref="floatingRef">
@@ -121,20 +107,13 @@
           class="hidden md:flex px-6 py-2 bg-white border-b border-b-neutral-200 border-b-solid"
           @blur="
             (event) => {
-              if (
-                !(event.currentTarget as Element).contains(
-                  event.relatedTarget as Element,
-                )
-              ) {
+              if (!(event.currentTarget as Element).contains(event.relatedTarget as Element)) {
                 close();
               }
             }
           "
         >
-          <li
-            v-for="(menuNode, index) in MenuData.children"
-            :key="menuNode.key"
-          >
+          <li v-for="(menuNode, index) in MenuData.children" :key="menuNode.key">
             <SfButton
               ref="triggerRefs"
               variant="tertiary"
@@ -149,11 +128,7 @@
             </SfButton>
 
             <div
-              v-if="
-                isOpen &&
-                activeNode.length === 1 &&
-                activeNode[0] === menuNode.key
-              "
+              v-if="isOpen && activeNode.length === 1 && activeNode[0] === menuNode.key"
               :key="activeMenu.key"
               ref="megaMenuRef"
               :style="style"
@@ -164,12 +139,7 @@
             >
               <template v-for="node in activeMenu.children" :key="node.key">
                 <template v-if="node.isLeaf">
-                  <SfListItem
-                    tag="a"
-                    size="sm"
-                    :href="node.value.link"
-                    class="typography-text-sm mb-2"
-                  >
+                  <SfListItem tag="a" size="sm" :href="node.value.link" class="typography-text-sm mb-2">
                     {{ node.value.label }}
                   </SfListItem>
                   <div class="col-start-2 col-end-5" />
@@ -182,12 +152,7 @@
                   </p>
                   <ul class="mt-2">
                     <li v-for="child in node.children" :key="child.key">
-                      <SfListItem
-                        tag="a"
-                        size="sm"
-                        :href="child.value.link"
-                        class="typography-text-sm py-1.5"
-                      >
+                      <SfListItem tag="a" size="sm" :href="child.value.link" class="typography-text-sm py-1.5">
                         {{ child.value.label }}
                       </SfListItem>
                     </li>
@@ -197,14 +162,8 @@
               <div
                 class="flex flex-col items-center justify-center overflow-hidden rounded-md bg-neutral-100 border-neutral-300 grow"
               >
-                <img
-                  :src="bannerNode.value.banner"
-                  :alt="bannerNode.value.bannerTitle"
-                  class="object-contain"
-                />
-                <p
-                  class="px-4 mt-4 mb-4 font-medium text-center typography-text-base"
-                >
+                <img :src="bannerNode.value.banner" :alt="bannerNode.value.bannerTitle" class="object-contain" />
+                <p class="px-4 mt-4 mb-4 font-medium text-center typography-text-base">
                   {{ bannerNode.value.bannerTitle }}
                 </p>
               </div>
@@ -214,10 +173,7 @@
       </nav>
 
       <!-- Mobile drawer -->
-      <div
-        v-if="isOpen"
-        class="md:hidden fixed inset-0 bg-neutral-500 bg-opacity-50"
-      />
+      <div v-if="isOpen" class="md:hidden fixed inset-0 bg-neutral-500 bg-opacity-50" />
       <SfDrawer
         ref="drawerRef"
         v-model="isOpen"
@@ -225,17 +181,9 @@
         class="md:hidden right-[50px] max-w-[376px] bg-white overflow-y-auto"
       >
         <nav>
-          <div
-            class="flex items-center justify-between p-4 border-b border-b-neutral-200 border-b-solid"
-          >
+          <div class="flex items-center justify-between p-4 border-b border-b-neutral-200 border-b-solid">
             <p class="typography-text-base font-medium">Browse products</p>
-            <SfButton
-              variant="tertiary"
-              square
-              aria-label="Close menu"
-              class="ml-2"
-              @click="close()"
-            >
+            <SfButton variant="tertiary" square aria-label="Close menu" class="ml-2" @click="close()">
               <SfIconClose class="text-neutral-500" />
             </SfButton>
           </div>
@@ -250,40 +198,35 @@
               >
                 <div class="flex items-center">
                   <SfIconArrowBack class="text-neutral-500" />
-                  <p class="ml-5 font-medium">{{ activeMenu.value.label }}</p>
+                  <p class="ml-5 font-medium">
+                    {{ activeMenu.value.label }}
+                  </p>
                 </div>
               </SfListItem>
             </li>
-            <template
-              v-for="node in activeMenu.children"
-              :key="node.value.label"
-            >
+            <template v-for="node in activeMenu.children" :key="node.value.label">
               <li v-if="node.isLeaf">
-                <SfListItem
-                  size="lg"
-                  tag="a"
-                  :href="node.value.link"
-                  class="first-of-type:mt-2"
-                >
+                <SfListItem size="lg" tag="a" :href="node.value.link" class="first-of-type:mt-2">
                   <div class="flex items-center">
-                    <p class="text-left">{{ node.value.label }}</p>
-                    <SfCounter class="ml-2">{{ node.value.counter }}</SfCounter>
+                    <p class="text-left">
+                      {{ node.value.label }}
+                    </p>
+                    <SfCounter class="ml-2">
+                      {{ node.value.counter }}
+                    </SfCounter>
                   </div>
                 </SfListItem>
               </li>
               <li v-else>
-                <SfListItem
-                  size="lg"
-                  tag="button"
-                  type="button"
-                  @click="goNext(node.key)"
-                >
+                <SfListItem size="lg" tag="button" type="button" @click="goNext(node.key)">
                   <div class="flex justify-between items-center">
                     <div class="flex items-center">
-                      <p class="text-left">{{ node.value.label }}</p>
-                      <SfCounter class="ml-2">{{
-                        node.value.counter
-                      }}</SfCounter>
+                      <p class="text-left">
+                        {{ node.value.label }}
+                      </p>
+                      <SfCounter class="ml-2">
+                        {{ node.value.counter }}
+                      </SfCounter>
                     </div>
                     <SfIconChevronRight class="text-neutral-500" />
                   </div>
@@ -328,10 +271,10 @@ import {
   useDropdown,
   SfInput,
   SfIconSearch,
-} from "@storefront-ui/vue";
-import { onMounted, ref } from "vue";
-import { unrefElement } from "@vueuse/core";
-import MenuData from "./MenuData";
+} from '@storefront-ui/vue';
+import { onMounted, ref } from 'vue';
+import { unrefElement } from '@vueuse/core';
+import MenuData from './MenuData';
 
 const cart = ref(false);
 
@@ -340,17 +283,9 @@ const cartState = () => (cart.value = !cart.value);
 const findNode = (keys: string[], node: typeof MenuNode): typeof MenuNode => {
   if (keys.length > 1) {
     const [currentKey, ...restKeys] = keys;
-    return findNode(
-      restKeys,
-      node.children?.find(
-        (child: typeof MenuNode) => child.key === currentKey,
-      ) || node,
-    );
+    return findNode(restKeys, node.children?.find((child: typeof MenuNode) => child.key === currentKey) || node);
   } else {
-    return (
-      node.children?.find((child: typeof MenuNode) => child.key === keys[0]) ||
-      node
-    );
+    return node.children?.find((child: typeof MenuNode) => child.key === keys[0]) || node;
   }
 };
 
@@ -358,7 +293,7 @@ const { close, open, isOpen } = useDisclosure();
 const { referenceRef, floatingRef, style } = useDropdown({
   isOpen,
   onClose: close,
-  placement: "bottom-start",
+  placement: 'bottom-start',
   middleware: [],
 });
 
@@ -367,17 +302,13 @@ const megaMenuRef = ref();
 const triggerRefs = ref();
 const activeNode = ref<string[]>([]);
 
-const activeMenu: typeof MenuNode = computed(() =>
-  findNode(activeNode.value, MenuData),
-);
-const bannerNode: typeof MenuNode = computed(() =>
-  findNode(activeNode.value.slice(0, 1), MenuData),
-);
+const activeMenu: typeof MenuNode = computed(() => findNode(activeNode.value, MenuData));
+const bannerNode: typeof MenuNode = computed(() => findNode(activeNode.value.slice(0, 1), MenuData));
 
 const trapFocusOptions = {
   activeState: isOpen,
   arrowKeysUpDown: true,
-  initialFocus: "container",
+  initialFocus: 'container',
 } as const;
 useTrapFocus(
   computed(() => megaMenuRef.value?.[0]),
@@ -402,7 +333,7 @@ const focusTrigger = (index: number) => {
   unrefElement(triggerRefs.value[index]).focus();
 };
 
-const inputValue = ref("");
+const inputValue = ref('');
 
 const search = () => {
   alert(`Successfully found 10 results for ${inputValue.value}`);
@@ -411,9 +342,9 @@ const search = () => {
 const actionItems = [
   {
     icon: SfIconFavorite,
-    label: "",
-    ariaLabel: "Wishlist",
-    role: "button",
+    label: '',
+    ariaLabel: 'Wishlist',
+    role: 'button',
   },
 ];
 </script>

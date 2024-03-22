@@ -10,7 +10,7 @@
       <SfIconPerson />
     </template>
     <p class="hidden lg:inline-flex whitespace-nowrap mr-2">
-      {{ $t("Log In") }}
+      {{ $t('Log In') }}
     </p>
   </SfButton>
   <!-- Backdrop -->
@@ -22,10 +22,7 @@
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <div
-      v-if="isOpen"
-      class="fixed inset-0 bg-neutral-700 bg-opacity-50 z-40"
-    />
+    <div v-if="isOpen" class="fixed inset-0 bg-neutral-700 bg-opacity-50 z-40" />
   </transition>
 
   <!-- Modal -->
@@ -46,30 +43,16 @@
       aria-describedby="promoModalDesc"
     >
       <header>
-        <SfButton
-          square
-          variant="tertiary"
-          class="absolute right-2 top-2"
-          @click="close"
-        >
+        <SfButton square variant="tertiary" class="absolute right-2 top-2" @click="close">
           <SfIconClose class="text-gray-600" />
         </SfButton>
-        <h3
-          id="promoModalTitle"
-          class="font-bold typography-headline-4 md:typography-headline-3"
-        >
-          {{ $t("Log In") }}
+        <h3 id="promoModalTitle" class="font-bold typography-headline-4 md:typography-headline-3">
+          {{ $t('Log In') }}
         </h3>
       </header>
       <div id="promoModalDesc" class="mt-2 w-full">
         <form class="px-3 py-2 space-y-4">
-          <FormInput
-            label="Email address"
-            type="email"
-            class="form-control"
-            placeholder="email"
-            required
-          />
+          <FormInput label="Email address" type="email" class="form-control" placeholder="email" required />
 
           <div>
             <FormInput
@@ -79,34 +62,23 @@
               autocomplete="current-password"
               required
             />
-            <NuxtLink
-              href="/forgot-password"
-              class="text-primary-700 block text-sm mt-1"
-            >
+            <NuxtLink href="/forgot-password" class="text-primary-700 block text-sm mt-1">
               Reset your password?
             </NuxtLink>
           </div>
-          <SfButton @click="close" class="w-full mt-8">Continue</SfButton>
+          <SfButton class="w-full mt-8" @click="close"> Continue </SfButton>
           <div class="text-center text-sm">
             Don't have an account?
-            <NuxtLink href="/register" class="text-primary-700">
-              Register
-            </NuxtLink>
+            <NuxtLink href="/register" class="text-primary-700"> Register </NuxtLink>
           </div>
         </form>
       </div>
-      <footer class="flex justify-end gap-4 mt-4"></footer>
+      <footer class="flex justify-end gap-4 mt-4" />
     </SfModal>
   </transition>
 </template>
 <script setup lang="ts">
-import {
-  SfButton,
-  SfModal,
-  useDisclosure,
-  SfIconClose,
-  SfIconPerson,
-} from "@storefront-ui/vue";
+import { SfButton, SfModal, useDisclosure, SfIconClose, SfIconPerson } from '@storefront-ui/vue';
 
 const { isOpen, open, close } = useDisclosure({ initialValue: false });
 </script>

@@ -16,11 +16,7 @@
         <SfIconChevronLeft />
       </SfButton>
     </template>
-    <ProductsCard
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
-    />
+    <ProductsCard v-for="product in products" :key="product.id" :product="product" />
     <template #nextButton="defaultProps">
       <SfButton
         v-bind="defaultProps"
@@ -37,13 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  SfButton,
-  SfIconFavorite,
-  SfIconChevronLeft,
-  SfIconChevronRight,
-  SfScrollable,
-} from "@storefront-ui/vue";
+import { SfButton, SfIconFavorite, SfIconChevronLeft, SfIconChevronRight, SfScrollable } from '@storefront-ui/vue';
 
 defineProps<{
   products: (typeof Product)[];

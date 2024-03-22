@@ -18,8 +18,7 @@
           v-model="modelValue"
           :type="props.type"
           :wrapper-class="{
-            'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500':
-              props.disabled || props.readonly,
+            'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500': props.disabled || props.readonly,
           }"
           v-bind="$attrs"
         />
@@ -27,18 +26,12 @@
     </div>
     <div class="flex justify-between">
       <div>
-        <p
-          v-if="props.invalid && !props.disabled"
-          class="text-sm text-negative-700 font-medium mt-0.5"
-        >
+        <p v-if="props.invalid && !props.disabled" class="text-sm text-negative-700 font-medium mt-0.5">
           {{ props.errorText }}
         </p>
         <p
           v-if="props.helpText"
-          :class="[
-            'typography-hint-xs mt-0.5',
-            props.disabled ? 'text-disabled-500' : 'text-neutral-500',
-          ]"
+          :class="['typography-hint-xs mt-0.5', props.disabled ? 'text-disabled-500' : 'text-neutral-500']"
         >
           {{ helpText }}
         </p>
@@ -53,11 +46,7 @@
         v-if="characterLimit && !readonly"
         :class="[
           'typography-error-xs mt-0.5',
-          disabled
-            ? 'text-disabled-500'
-            : isAboveLimit
-              ? 'text-negative-700 font-medium'
-              : 'text-neutral-500',
+          disabled ? 'text-disabled-500' : isAboveLimit ? 'text-negative-700 font-medium' : 'text-neutral-500',
         ]"
       >
         {{ charsCount }}
@@ -66,8 +55,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, computed } from "vue";
-import { SfInput } from "@storefront-ui/vue";
+import { computed } from 'vue';
+import { SfInput } from '@storefront-ui/vue';
 defineOptions({
   inheritAttrs: false,
 });
@@ -87,12 +76,8 @@ const props = defineProps<{
 
 const modelValue: number | string = defineModel<string, number>();
 
-const isAboveLimit = computed(() =>
-  props.characterLimit ? modelValue.length > props.characterLimit : false,
-);
+const isAboveLimit = computed(() => (props.characterLimit ? modelValue.value.length > props.characterLimit : false));
 const charsCount = computed(() =>
-  props.characterLimit
-    ? props.characterLimit - modelValue.length
-    : modelValue.length,
+  props.characterLimit ? props.characterLimit - modelValue.value.length : modelValue.value.length,
 );
 </script>

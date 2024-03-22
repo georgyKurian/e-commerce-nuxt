@@ -3,14 +3,8 @@
     <div
       class="grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] px-4 md:px-6 pb-10 container mx-auto"
     >
-      <ul
-        v-for="{ label, subcategories } in categories"
-        :key="label"
-        class="grid grid-cols xs:pb-4"
-      >
-        <li
-          class="ml-4 text-lg font-medium leading-7 text-neutral-900 font-body"
-        >
+      <ul v-for="{ label, subcategories } in categories" :key="label" class="grid grid-cols xs:pb-4">
+        <li class="ml-4 text-lg font-medium leading-7 text-neutral-900 font-body">
           {{ label }}
         </li>
         <SfListItem
@@ -31,11 +25,7 @@
     </div>
     <hr />
     <div class="py-10 md:flex md:mx-auto max-w-[1536px]">
-      <div
-        v-for="{ label, icon, link, details } in contactOptions"
-        :key="label"
-        class="mx-auto my-4 text-center"
-      >
+      <div v-for="{ label, icon, link, details } in contactOptions" :key="label" class="mx-auto my-4 text-center">
         <component :is="icon" size="lg" />
         <p class="py-1 my-2 font-medium typography-text-lg font-body">
           <SfLink
@@ -47,11 +37,7 @@
             {{ label }}
           </SfLink>
         </p>
-        <p
-          v-for="option in details"
-          :key="option"
-          class="leading-5 typography-text-sm text-neutral-600 font-body"
-        >
+        <p v-for="option in details" :key="option" class="leading-5 typography-text-sm text-neutral-600 font-body">
           {{ option }}
         </p>
       </div>
@@ -72,13 +58,11 @@
             <component :is="icon" />
           </SfButton>
         </div>
-        <div
-          class="flex items-center justify-center gap-6 py-2 my-4 md:ml-auto md:my-0"
-        >
+        <div class="flex items-center justify-center gap-6 py-2 my-4 md:ml-auto md:my-0">
           <SfLink
             v-for="{ label, link } in bottomLinks"
-            :tag="NuxtLink"
             :key="label"
+            :tag="NuxtLink"
             variant="secondary"
             class="text-white no-underline typography-text-sm active:text-white active:underline hover:text-white hover:underline"
             :href="link"
@@ -108,158 +92,158 @@ import {
   SfButton,
   SfLink,
   SfListItem,
-} from "@storefront-ui/vue";
-import { NuxtLink } from "#components";
+} from '@storefront-ui/vue';
+import { NuxtLink } from '#components';
 
 const categories = [
   {
-    label: "How to buy",
+    label: 'How to buy',
     subcategories: [
       {
-        subcategoryLabel: "Payment methods",
-        link: "#",
+        subcategoryLabel: 'Payment methods',
+        link: '#',
       },
       {
-        subcategoryLabel: "Order pickup",
-        link: "#",
+        subcategoryLabel: 'Order pickup',
+        link: '#',
       },
       {
-        subcategoryLabel: "Purchase status",
-        link: "#",
+        subcategoryLabel: 'Purchase status',
+        link: '#',
       },
       {
-        subcategoryLabel: "Track orders",
-        link: "#",
+        subcategoryLabel: 'Track orders',
+        link: '#',
       },
       {
-        subcategoryLabel: "Returns",
-        link: "#",
+        subcategoryLabel: 'Returns',
+        link: '#',
       },
     ],
   },
   {
-    label: "Help",
+    label: 'Help',
     subcategories: [
       {
-        subcategoryLabel: "Help centers",
-        link: "#",
+        subcategoryLabel: 'Help centers',
+        link: '#',
       },
       {
-        subcategoryLabel: "Security & fraud",
-        link: "#",
+        subcategoryLabel: 'Security & fraud',
+        link: '#',
       },
       {
-        subcategoryLabel: "Feedback",
-        link: "#",
+        subcategoryLabel: 'Feedback',
+        link: '#',
       },
       {
-        subcategoryLabel: "Contact",
-        link: "#",
+        subcategoryLabel: 'Contact',
+        link: '#',
       },
     ],
   },
   {
-    label: "Services",
+    label: 'Services',
     subcategories: [
       {
-        subcategoryLabel: "Gift cards",
-        link: "#",
+        subcategoryLabel: 'Gift cards',
+        link: '#',
       },
       {
-        subcategoryLabel: "Order pickup",
-        link: "#",
+        subcategoryLabel: 'Order pickup',
+        link: '#',
       },
       {
-        subcategoryLabel: "Purchase status",
-        link: "#",
+        subcategoryLabel: 'Purchase status',
+        link: '#',
       },
       {
-        subcategoryLabel: "Track orders",
-        link: "#",
+        subcategoryLabel: 'Track orders',
+        link: '#',
       },
     ],
   },
   {
-    label: "About",
+    label: 'About',
     subcategories: [
       {
-        subcategoryLabel: "About us",
-        link: "#",
+        subcategoryLabel: 'About us',
+        link: '#',
       },
       {
-        subcategoryLabel: "Order pickup",
-        link: "#",
+        subcategoryLabel: 'Order pickup',
+        link: '#',
       },
       {
-        subcategoryLabel: "Purchase status",
-        link: "#",
+        subcategoryLabel: 'Purchase status',
+        link: '#',
       },
       {
-        subcategoryLabel: "Track orders",
-        link: "#",
+        subcategoryLabel: 'Track orders',
+        link: '#',
       },
       {
-        subcategoryLabel: "Returns",
-        link: "#",
+        subcategoryLabel: 'Returns',
+        link: '#',
       },
     ],
   },
 ];
 const socialMedia = [
   {
-    label: "Facebook",
-    link: "#",
+    label: 'Facebook',
+    link: '#',
     icon: SfIconFacebook,
   },
   {
-    label: "Twitter",
-    link: "#",
+    label: 'Twitter',
+    link: '#',
     icon: SfIconTwitter,
   },
   {
-    label: "Instagram",
-    link: "#",
+    label: 'Instagram',
+    link: '#',
     icon: SfIconInstagram,
   },
   {
-    label: "Pinterest",
-    link: "#",
+    label: 'Pinterest',
+    link: '#',
     icon: SfIconPinterest,
   },
   {
-    label: "Youtube",
-    link: "#",
+    label: 'Youtube',
+    link: '#',
     icon: SfIconYoutube,
   },
 ];
 const contactOptions = [
   {
-    label: "Help center",
-    link: "#",
-    details: ["Find answers online anytime"],
+    label: 'Help center',
+    link: '#',
+    details: ['Find answers online anytime'],
     icon: SfIconHelp,
   },
   {
-    label: "Live chat",
-    link: "#",
-    details: ["Mon–Fri, 5am–10pm PT", "Sat–Sun, 6am–9pm PT"],
+    label: 'Live chat',
+    link: '#',
+    details: ['Mon–Fri, 5am–10pm PT', 'Sat–Sun, 6am–9pm PT'],
     icon: SfIconContactSupport,
   },
   {
-    label: "1 234 567 8901",
-    link: "#",
-    details: ["Mon–Fri, 5am–10pm PT", "Sat–Sun, 6am–9pm PT"],
+    label: '1 234 567 8901',
+    link: '#',
+    details: ['Mon–Fri, 5am–10pm PT', 'Sat–Sun, 6am–9pm PT'],
     icon: SfIconCall,
   },
 ];
 const bottomLinks = [
   {
-    label: "Terms",
-    link: "#",
+    label: 'Terms',
+    link: '#',
   },
   {
-    label: "Privacy policy",
-    link: "#",
+    label: 'Privacy policy',
+    link: '#',
   },
 ];
 </script>
