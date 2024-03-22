@@ -57,6 +57,8 @@
           </SfInput>
         </form>
         <nav class="flex flex-nowrap justify-end items-center md:ml-10 gap-x-1">
+          <HeaderDarkModeToggleButton />
+          <HeaderLocaleButton />
           <HeaderCartButton @open="cartState" />
           <HeaderProfileButton />
           <SfButton
@@ -149,7 +151,7 @@
               :key="activeMenu.key"
               ref="megaMenuRef"
               :style="style"
-              class="hidden md:grid gap-x-6 grid-cols-4 bg-white shadow-lg p-6 left-0 right-0 outline-none"
+              class="hidden md:grid gap-x-6 grid-cols-4 bg-white shadow-lg p-6 left-0 right-0 outline-none z-10"
               tabindex="0"
               @mouseleave="close()"
               @keydown.esc="focusTrigger(index)"

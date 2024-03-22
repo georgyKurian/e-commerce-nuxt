@@ -38,7 +38,6 @@
 
 <script lang="ts" setup>
 import {
-  SfLink,
   SfButton,
   SfIconFavorite,
   SfIconChevronLeft,

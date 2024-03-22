@@ -9,7 +9,9 @@
     <template #prefix>
       <SfIconPerson />
     </template>
-    <p class="hidden lg:inline-flex whitespace-nowrap mr-2">Log In</p>
+    <p class="hidden lg:inline-flex whitespace-nowrap mr-2">
+      {{ $t("Log In") }}
+    </p>
   </SfButton>
   <!-- Backdrop -->
   <transition
@@ -56,7 +58,7 @@
           id="promoModalTitle"
           class="font-bold typography-headline-4 md:typography-headline-3"
         >
-          Log In
+          {{ $t("Log In") }}
         </h3>
       </header>
       <div id="promoModalDesc" class="mt-2 w-full">

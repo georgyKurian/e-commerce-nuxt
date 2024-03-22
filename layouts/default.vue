@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <SeoKit />
     <Header />
-    <div id="layout" class="w-9/12 mx-auto">
+    <div id="layout" class="mx-auto bg-gray-50 dark:bg-gray-900">
       <slot />
     </div>
     <Newsletter v-if="route.path != '/contact'" />
@@ -12,9 +11,10 @@
 
 <script setup>
 const route = useRoute();
+import { useI18n } from "#imports";
+const { t } = useI18n();
 
 useHead({
-  title: "V-Store",
   meta: [
     { property: "og:title", content: `V-Store - ${route.meta.title}` },
     { property: "og:image", content: "/images/jum1.jpg" },
@@ -32,7 +32,6 @@ useHead({
 
 <style>
 #app {
-  background-color: #f8f8f8 !important;
   font-family: "Exo 2", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

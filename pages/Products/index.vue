@@ -1,6 +1,5 @@
 <template>
   <div class="container mx-auto py-4 md:py-8">
-    <ProductsBreadCrumbs />
     <div class="">
       <div v-if="grid.cards.length !== 0" class="flex flex-row py-3">
         <ProductsFilterBar class="w-3/12 mr-2 md:block" />
@@ -14,37 +13,27 @@
         </div>
       </div>
       <Notification v-else class="my-5 py-5">
-        <h4>Sorry, we can't find any product with this features</h4>
+        <h4>{{ $t("Sorry, we can't find any product with this features") }}</h4>
       </Notification>
     </div>
   </div>
 </template>
 
-<script setup>
-definePageMeta({
-  title: "Products",
-});
+<script lang="ts" setup>
+const { t } = useI18n();
+const store = useProductsStore();
+
 useHead({
+  title: t("Shop"),
   link: [{ rel: "canonical", href: "https://vue-ecom.vercel.app/products" }],
 });
-const props = defineProps({
-  category: String,
-});
-const store = useProductsStore();
 
 const grid = reactive({
   cards: [],
   showCards: 6,
 });
 
-onMounted(() => reSet());
-const reSet = () => {
-  if (props.category) {
-    grid.cards = store.items.filter((item) => item.type == props.category);
-  } else {
-    grid.cards = store.items;
-  }
-};
+grid.cards = store.items;
 const slicedCards = computed(() => grid.cards.slice(0, grid.showCards));
 
 const sortItems = (value) => {
