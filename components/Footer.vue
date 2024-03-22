@@ -109,6 +109,8 @@ import {
   SfLink,
   SfListItem,
 } from "@storefront-ui/vue";
+import { NuxtLink } from "#components";
+
 const categories = [
   {
     label: "How to buy",
