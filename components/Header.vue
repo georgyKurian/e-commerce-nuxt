@@ -35,6 +35,7 @@
         >
           <SfInput
             v-model="inputValue"
+            :name="$t('Search')"
             type="search"
             class="[&::-webkit-search-cancel-button]:appearance-none"
             placeholder="Search"
@@ -86,6 +87,7 @@
           @submit.prevent="search"
         >
           <SfInput
+            :name="$t('Search')"
             v-model="inputValue"
             type="search"
             class="[&::-webkit-search-cancel-button]:appearance-none"
