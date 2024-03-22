@@ -27,7 +27,7 @@
         </SfSelect>
       </label>
     </div>
-    <Input
+    <FormInput
       v-else
       v-model="modelValue"
       label="Quantity"
