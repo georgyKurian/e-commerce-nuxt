@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <div id="layout" class="mx-auto bg-white dark:bg-gray-800">
+    <div id="layout" class="mx-auto bg-gray-50 dark:bg-gray-900">
       <slot />
     </div>
     <Newsletter v-if="route.path != '/contact'" />

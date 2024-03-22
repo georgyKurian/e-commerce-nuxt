@@ -15,6 +15,7 @@
       </span>
       <SfInput
         v-model="modelValue"
+        v-bind="$attrs"
         :type="props.type"
         :wrapper-class="{
           'peer !bg-disabled-100 !ring-disabled-300 !ring-1 !text-disabled-500':
@@ -66,6 +67,10 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { SfInput } from "@storefront-ui/vue";
+
+defineOptions({
+  inheritAttrs: false,
+});
 
 const props = defineProps<{
   type?: string;
