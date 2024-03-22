@@ -8,7 +8,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "translate": "i18next-scanner --config i18next-scanner.config.js"
+    "translate": "i18next-scanner --config i18next-scanner.config.js",
+    "check-style": "prettier -c './**/*.{vue,ts,json,js,css}' ",
+    "fix-style": "prettier --write './**/*.{vue,ts,json,js,css}' "
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.8",
@@ -31,6 +33,7 @@
     "@vuepic/vue-datepicker": "^8.3.1",
     "bootstrap": "^5.2.3",
     "pinia": "^2.0.34",
+    "prettier": "^3.2.5",
     "sass-loader": "^14.1.1",
     "vue-i18n": "^9.10.2"
   },

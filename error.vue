@@ -6,14 +6,17 @@
         <h1>404</h1>
       </div>
       <h2>Page not found</h2>
-      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <p>
+        The page you are looking for might have been removed had its name
+        changed or is temporarily unavailable.
+      </p>
       <NuxtLink to="/">home page</NuxtLink>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Cabin:400,700');
+@import url("https://fonts.googleapis.com/css?family=Cabin:400,700");
 
 #notfound {
   position: relative;
@@ -43,7 +46,7 @@
   margin: 0px auto 50px;
 }
 
-.notfound .notfound-404>div:first-child {
+.notfound .notfound-404 > div:first-child {
   position: absolute;
   left: 0;
   right: 0;
@@ -57,8 +60,8 @@
   border-radius: 5px;
 }
 
-.notfound .notfound-404>div:first-child:before {
-  content: '';
+.notfound .notfound-404 > div:first-child:before {
+  content: "";
   position: absolute;
   left: -5px;
   right: -5px;
@@ -70,7 +73,7 @@
 }
 
 .notfound .notfound-404 h1 {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   color: #000;
   font-weight: 700;
   margin: 0;
@@ -87,7 +90,7 @@
 }
 
 .notfound h2 {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   font-size: 33px;
   font-weight: 700;
   text-transform: uppercase;
@@ -95,17 +98,17 @@
 }
 
 .notfound p {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   font-size: 16px;
   color: #000;
   font-weight: 400;
 }
 
 .notfound a {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   display: inline-block;
   padding: 10px 25px;
-  background-color: #DBF0FA;
+  background-color: #dbf0fa;
   border: none;
   border-radius: 40px;
   color: #fff;

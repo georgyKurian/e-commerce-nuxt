@@ -121,7 +121,11 @@
           class="hidden md:flex px-6 py-2 bg-white border-b border-b-neutral-200 border-b-solid"
           @blur="
             (event) => {
-              if (!(event.currentTarget as Element).contains(event.relatedTarget as Element)) {
+              if (
+                !(event.currentTarget as Element).contains(
+                  event.relatedTarget as Element,
+                )
+              ) {
                 close();
               }
             }
@@ -339,8 +343,8 @@ const findNode = (keys: string[], node: typeof MenuNode): typeof MenuNode => {
     return findNode(
       restKeys,
       node.children?.find(
-        (child: typeof MenuNode) => child.key === currentKey
-      ) || node
+        (child: typeof MenuNode) => child.key === currentKey,
+      ) || node,
     );
   } else {
     return (
@@ -364,10 +368,10 @@ const triggerRefs = ref();
 const activeNode = ref<string[]>([]);
 
 const activeMenu: typeof MenuNode = computed(() =>
-  findNode(activeNode.value, MenuData)
+  findNode(activeNode.value, MenuData),
 );
 const bannerNode: typeof MenuNode = computed(() =>
-  findNode(activeNode.value.slice(0, 1), MenuData)
+  findNode(activeNode.value.slice(0, 1), MenuData),
 );
 
 const trapFocusOptions = {
@@ -377,7 +381,7 @@ const trapFocusOptions = {
 } as const;
 useTrapFocus(
   computed(() => megaMenuRef.value?.[0]),
-  trapFocusOptions
+  trapFocusOptions,
 );
 useTrapFocus(drawerRef, trapFocusOptions);
 
