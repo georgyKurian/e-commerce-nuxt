@@ -5,9 +5,11 @@
       :key="title"
       :href="link"
       :aria-label="title"
-      class="flex-col group bg-neutral-900 h-20 md:h-64 w-full flex justify-center items-center focus-visible:outline focus-visible:outline-offset focus-visible:rounded-md text-center"
+      class="flex-col group bg-neutral-900 dark:bg-neutral-100 h-20 md:h-64 w-full flex justify-center items-center focus-visible:outline focus-visible:outline-offset focus-visible:rounded-md text-center"
     >
-      <span class="text-center text-white font-semibold text-2xl group-hover:shadow-xl group-active:shadow-none">
+      <span
+        class="text-center text-white dark:text-black font-semibold text-2xl group-hover:shadow-xl group-active:shadow-none"
+      >
         {{ title }}
       </span>
     </a>
