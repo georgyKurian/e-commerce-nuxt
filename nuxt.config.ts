@@ -30,6 +30,7 @@ export default defineNuxtConfig({
     images: fileURLToPath(new URL('./assets', import.meta.url)),
   },
   modules: [
+    '@nuxt/content',
     '@nuxt/devtools',
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
