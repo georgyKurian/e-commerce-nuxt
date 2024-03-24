@@ -82,7 +82,7 @@ const breadcrumbs = computed(() => {
   return [
     {
       name: 'Home',
-      path: '/',
+      link: '/',
     },
     ...props.path,
   ];
