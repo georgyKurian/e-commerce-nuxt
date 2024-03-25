@@ -6,9 +6,7 @@
         <div class="col-12 col-lg-6">
           <div class="newsletter-text">
             <h2 class="text-3xl mb-2">Join our Newsletter</h2>
-            <p class="mb-0">
-              Nulla ac convallis lorem, eget euismod nisl. bibendum nec.
-            </p>
+            <p class="mb-0">Nulla ac convallis lorem, eget euismod nisl. bibendum nec.</p>
           </div>
         </div>
 
@@ -20,12 +18,7 @@
                 class="w-full h-12 border-0 border-b-2 border-black bg-transparent text-xl italic outline-none px-8"
                 placeholder="Your E-mail"
               />
-              <button
-                class="bg-black text-white px-4 py-2"
-                @click.prevent="submit"
-              >
-                Submit
-              </button>
+              <button class="bg-black text-white px-4 py-2" @click.prevent="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -36,6 +29,6 @@
 
 <script setup lang="ts">
 function submit(): void {
-  return alert("Thank you for subscribing");
+  return alert('Thank you for subscribing');
 }
 </script>

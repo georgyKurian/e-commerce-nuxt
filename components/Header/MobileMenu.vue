@@ -12,9 +12,9 @@
       title="mobile-menu"
     />
     <div class="dropdown-menu hb" aria-labelledby="navd">
-      <NuxtLink class="dropdown-item" to="/">Home</NuxtLink>
-      <NuxtLink class="dropdown-item" to="/products">Products</NuxtLink>
-      <NuxtLink class="dropdown-item" to="/contact">Contact us</NuxtLink>
+      <NuxtLink class="dropdown-item" to="/"> Home </NuxtLink>
+      <NuxtLink class="dropdown-item" to="/products"> Products </NuxtLink>
+      <NuxtLink class="dropdown-item" to="/contact"> Contact us </NuxtLink>
     </div>
   </div>
 </template>

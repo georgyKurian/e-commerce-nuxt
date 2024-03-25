@@ -2,9 +2,9 @@
   <div class="d-flex">
     <div class="dropdown flex-fill px-4 px-sm-0">
       <a
+        id="dropdownMenuLink"
         class="btn btn-light dropdown-toggle"
         role="button"
-        id="dropdownMenuLink"
         data-bs-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
@@ -12,27 +12,21 @@
         <span style="color: #f2be00">{{ sort }}</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" @click="sortBy('newset')" value="newset"
-          >Newest</a
-        >
-        <a class="dropdown-item" @click="sortBy('price')" value="price"
-          >Price</a
-        >
-        <a class="dropdown-item" @click="sortBy('trending')" value="trending"
-          >Trending</a
-        >
+        <a class="dropdown-item" value="newset" @click="sortBy('newset')">Newest</a>
+        <a class="dropdown-item" value="price" @click="sortBy('price')">Price</a>
+        <a class="dropdown-item" value="trending" @click="sortBy('trending')">Trending</a>
       </div>
     </div>
     <div class="dropdown d-block d-lg-none d-xl-none px-4 px-sm-0">
       <button
+        id="MenuLink"
         class="btn btn-light dropdown-toggle"
         role="button"
-        id="MenuLink"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
       >
-        {{ $t("CATAGORIES") }}
+        {{ $t('CATAGORIES') }}
       </button>
       <!-- <div class="dropdown-menu" aria-labelledby="MenuLink">
                 <a class="dropdown-item" v-for="item in grid.types" :key="item.name" @click="sortItems"
@@ -51,14 +45,14 @@
 </template>
 
 <script setup lang="ts">
-const sort = ref("DEFAULT");
+const sort = ref('DEFAULT');
 
 const emit = defineEmits<{
-  (e: "sortItem", name: string): void;
+  (e: 'sortItem', name: string): void;
 }>();
 
 function sortBy(value: string): void {
-  emit("sortItem", value);
+  emit('sortItem', value);
   sort.value = value.toUpperCase();
 }
 </script>

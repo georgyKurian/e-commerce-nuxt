@@ -5,9 +5,9 @@
         <p class="text-center mt-4 pb-2 h3">Cart</p>
         <hr />
         <Notification v-if="!store.cartItemsCount">
-          {{ $t("Your cart is empty, try to Add stuff.") }}
+          {{ $t('Your cart is empty, try to Add stuff.') }}
         </Notification>
-        <div class="row" v-for="item in store.cart" :key="item.id">
+        <div v-for="item in store.cart" :key="item.id" class="row">
           <CartItem :item="item" />
         </div>
         <div v-if="store.cartItemsCount">
@@ -16,10 +16,7 @@
         </div>
       </div>
     </div>
-    <div
-      :class="['modal', cart.isOpen ? '' : 'off']"
-      @click="$emit('closeCart')"
-    ></div>
+    <div :class="['modal', cart.isOpen ? '' : 'off']" @click="$emit('closeCart')" />
   </div>
 </template>
 

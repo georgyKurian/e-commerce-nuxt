@@ -6,8 +6,8 @@
           v-model="dropdownOpened"
           strategy="absolute"
           placement="bottom-start"
-          @update:model-value="close"
           class="z-1"
+          @update:model-value="close"
         >
           <template #trigger>
             <SfButton
@@ -26,11 +26,7 @@
             </SfButton>
           </template>
           <div class="px-4 py-2 rounded-md shadow-md border-neutral-10">
-            <li
-              v-for="item in breadcrumbs"
-              :key="item.name"
-              class="py-2 last-of-type:hidden"
-            >
+            <li v-for="item in breadcrumbs" :key="item.name" class="py-2 last-of-type:hidden">
               <SfLink
                 :tag="NuxtLink"
                 :href="item.link"
@@ -72,15 +68,9 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  SfDropdown,
-  SfButton,
-  SfLink,
-  SfIconMoreHoriz,
-  SfIconChevronRight,
-} from "@storefront-ui/vue";
-import { ref } from "vue";
-import { NuxtLink } from "#components";
+import { SfDropdown, SfButton, SfLink, SfIconMoreHoriz, SfIconChevronRight } from '@storefront-ui/vue';
+import { ref } from 'vue';
+import { NuxtLink } from '#components';
 
 const props = defineProps<{
   path: {
@@ -91,8 +81,8 @@ const props = defineProps<{
 const breadcrumbs = computed(() => {
   return [
     {
-      name: "Home",
-      path: "/",
+      name: 'Home',
+      link: '/',
     },
     ...props.path,
   ];

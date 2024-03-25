@@ -6,10 +6,7 @@
 
         <div class="mx-auto">
           <ProductsList :product-list="slicedCards" />
-          <ProductsMoreButton
-            v-if="grid.cards.length !== 0"
-            @increment-cards="grid.showCards += 6"
-          />
+          <ProductsMoreButton v-if="grid.cards.length !== 0" @increment-cards="grid.showCards += 6" />
         </div>
       </div>
       <Notification v-else class="my-5 py-5">
@@ -24,8 +21,8 @@ const { t } = useI18n();
 const store = useProductsStore();
 
 useHead({
-  title: t("Shop"),
-  link: [{ rel: "canonical", href: "https://vue-ecom.vercel.app/products" }],
+  title: t('Shop'),
+  link: [{ rel: 'canonical', href: 'https://vue-ecom.vercel.app/products' }],
 });
 
 const grid = reactive({
@@ -38,9 +35,9 @@ const slicedCards = computed(() => grid.cards.slice(0, grid.showCards));
 
 const sortItems = (value) => {
   grid.cards.sort((a, b) => {
-    if (value === "newset") return a.title.length * 2 - b.title.length * 4;
-    if (value === "price") return a.price - b.price;
-    if (value === "trending") return a.type.length - b.type.length;
+    if (value === 'newset') return a.title.length * 2 - b.title.length * 4;
+    if (value === 'price') return a.price - b.price;
+    if (value === 'trending') return a.type.length - b.type.length;
   });
   return (grid.sortButton = value.toUpperCase());
 };

@@ -1,4 +1,4 @@
-import type Product from "./Product";
+import type Product from './Product';
 
 export default interface State {
   productInfo: Product | null;

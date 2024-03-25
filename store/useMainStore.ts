@@ -1,5 +1,6 @@
-import { defineStore } from "pinia";
-import { MainStore, Product } from "~/types/types";
+import { CartItem } from '#build/components';
+import { defineStore } from 'pinia';
+import { MainStore, Product } from '~/types/types';
 
 interface CartItem {
   product: Product;
@@ -8,19 +9,18 @@ interface CartItem {
   global: boolean;
 }
 
-const useMainStore = defineStore("main", {
+const useMainStore = defineStore('main', {
   state: (): MainStore => ({
     user: null,
     cart: [],
   }),
   getters: {
     cartItemsCount: ({ cart }): number => cart.length,
-    cartItemsCountText: ({ cart }): string =>
-      cart.length > 100 ? "99+" : cart.length.toString(),
+    cartItemsCountText: ({ cart }): string => (cart.length > 100 ? '99+' : cart.length.toString()),
     cartTotalPrice: ({ cart }): number | undefined => {
       if (cart.length !== 1) {
         const sum = cart?.reduce((acc: number, obj: any) => {
-          let result = acc + obj.price;
+          const result = acc + obj.price;
           return result;
         }, 0);
         return sum;
@@ -29,11 +29,11 @@ const useMainStore = defineStore("main", {
     },
   },
   actions: {
-    addToCart(n: object) {
-      return this.cart.push(n);
+    addToCart(item: typeof CartItem) {
+      return this.cart.push(item);
     },
-    removeFromCart(n: number) {
-      let index = this.cart.findIndex((x) => x.id === n);
+    removeFromCart(cartItemId: number) {
+      const index = this.cart.findIndex((cartItem: typeof CartItem) => cartItem.id === cartItemId);
       return this.cart.splice(index, 1);
     },
   },

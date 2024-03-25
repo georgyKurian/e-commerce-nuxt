@@ -1,27 +1,3 @@
-<p align="center">
-  <img src="https://i.imgur.com/GT1oGmn.png" alt="logo">
-</p>
-<p align="center">
-  <img src="https://awesome.re/badge.svg" link="https://awesome.re/badge.svg">
-</p>
-
-<p align="center">
-  <a href="http://www.wtfpl.net/about/">
-    <img src="https://img.shields.io/badge/License-WTFPL-brightgreen.svg?style=flat-square" width="100px">
-  </a>
-  <a href="https://app.travis-ci.com/rash0/">
-      <img src="https://img.shields.io/travis/rash0/vue-ecom/master?style=flat-square" width="95px">
-  </a>
-   <a href="">
-      <img src="https://4.vercel.app/github/issues/rash0/vue-ecom?radius=0" width="95px">
-    </a>
-</p>
-
-<p align="center">
-   <img src="https://i.imgur.com/1AFVEVm.png">
-</p>
-<br/> <br/>
-
 VueStoreFront is an easy, readily available, mobile-ready, up-to-date StoreFront template.
 
 - 🍀 Minimal UI
@@ -39,15 +15,16 @@ VueStoreFront is build over a number of openSource projects:
 - [Vue.Js](https://vuejs.org/)
 - [Nuxt.Js](https://nuxt.com/)
 - [Pinia](https://pinia.vuejs.org/)
-- [BootStrap](https://getbootstrap.com/)
+- [TailwindCss](https://tailwindcss.com/)
+- [Storefron UI 2](https://docs.storefrontui.io/v2/)
 
 <br />
 
 ## Installation
 
 ```sh
-# Open the project folder
-cd Vue-Ecom && npm install
+# Install
+npm install
 
 # for Development:
 npm run dev
@@ -83,7 +60,9 @@ Vue-Ecom/
 │   │   ├── Details/
 │   │   ├── Contact.vue
 │   │   ├── Index.vue
-│   │   └── Products.vue
+│   │   └── Products
+│   │       └── Index
+│   │       └── [id]
 ├── Plugins/
 ```
 

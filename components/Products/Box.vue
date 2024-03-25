@@ -1,15 +1,13 @@
 <template>
   <div>
     <div class="row mb-5">
-      <div
-        class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center justify-content-start"
-      >
+      <div class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center justify-content-start">
         <div class="info pt-xl-0 pt-lg-0 pt-5">
           <h1 class="text-3xl font-bold font-weight-bold text-uppercase pt-3">
             {{ item.title }}
           </h1>
           <div class="flex flex-col">
-            <SfRating :value="3.5" :halfIncrement="true" />
+            <SfRating :value="3.5" :half-increment="true" />
           </div>
           <h6 style="width: 190px">3 reviews</h6>
           <h4 class="my-4">
@@ -27,7 +25,7 @@
 
           <ProductsQuantity v-model="quantity" />
           <SfButton class="w-full my-4" @click="addtoCart(item)">
-            {{ $t("Add To Cart") }}
+            {{ $t('Add To Cart') }}
           </SfButton>
           <ProductsInventoryDetails :product="item" />
         </div>
@@ -37,12 +35,12 @@
 </template>
 
 <script setup lang="ts">
-import { SfButton, SfInput, SfRating } from "@storefront-ui/vue";
-import "@vuepic/vue-datepicker/dist/main.css";
-import Datepicker from "@vuepic/vue-datepicker";
+import { SfButton, SfInput, SfRating } from '@storefront-ui/vue';
+import '@vuepic/vue-datepicker/dist/main.css';
+import Datepicker from '@vuepic/vue-datepicker';
 
 const mainStore = useMainStore();
-const quantity: number | string = defineModel<number>("quantity", {
+const quantity: number | string = defineModel<number>('quantity', {
   type: Number,
   default: 1,
 });
@@ -58,7 +56,7 @@ const allowedDates = computed(() => {
 });
 
 function addtoCart(item: object) {
-  for (var i = 0; i < quantity.value; i++) {
+  for (let i = 0; i < quantity.value; i++) {
     mainStore.addToCart(item);
   }
 }

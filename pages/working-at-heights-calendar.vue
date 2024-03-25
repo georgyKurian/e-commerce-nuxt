@@ -1,19 +1,10 @@
 <template>
   <Container class="py-4">
     <PageHeading>Calendar</PageHeading>
-    <div
-      class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"
-    >
-      <div
-        class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4"
-      >
+    <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+      <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
         <div class="w-full">
-          <SfInput
-            :name="$t('Search')"
-            placeholder="Search"
-            icon="search"
-            class="w-full"
-          />
+          <SfInput :name="$t('Search')" placeholder="Search" icon="search" class="w-full" />
         </div>
         <div
           class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
@@ -53,19 +44,9 @@
                 />
               </svg>
             </button>
-            <div
-              id="filterDropdown"
-              class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
-            >
-              <h6
-                class="mb-3 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Choose brand
-              </h6>
-              <ul
-                class="space-y-2 text-sm"
-                aria-labelledby="filterDropdownButton"
-              >
+            <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+              <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Choose brand</h6>
+              <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                 <li class="flex items-center">
                   <input
                     id="apple"
@@ -73,9 +54,7 @@
                     value=""
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                   />
-                  <label
-                    for="apple"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                     >Apple (56)</label
                   >
                 </li>
@@ -86,9 +65,7 @@
                     value=""
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                   />
-                  <label
-                    for="fitbit"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                     >Microsoft (16)</label
                   >
                 </li>
@@ -99,9 +76,7 @@
                     value=""
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                   />
-                  <label
-                    for="razor"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  <label for="razor" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                     >Razor (49)</label
                   >
                 </li>
@@ -112,9 +87,7 @@
                     value=""
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                   />
-                  <label
-                    for="nikon"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  <label for="nikon" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                     >Nikon (12)</label
                   >
                 </li>
@@ -125,23 +98,15 @@
                     value=""
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                   />
-                  <label
-                    for="benq"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                    >BenQ (74)</label
-                  >
+                  <label for="benq" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">BenQ (74)</label>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <table
-        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-      >
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-        >
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">Course</th>
             <th scope="col" class="px-6 py-3">Date</th>
@@ -156,18 +121,19 @@
             :key="classData.id"
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
           >
-            <td
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               {{ classData.course_id }}
             </td>
-            <td class="px-6 py-4">{{ classData.date }}</td>
+            <td class="px-6 py-4">
+              {{ classData.date }}
+            </td>
             <td class="px-6 py-4">
               <div>{{ classData.city }}</div>
               <div>{{ classData.street_address }}</div>
             </td>
-            <td class="px-6 py-4">{{ classData.seats_available }}</td>
+            <td class="px-6 py-4">
+              {{ classData.seats_available }}
+            </td>
             <td class="px-6 py-4">
               <SfButton variant="secondary"> View </SfButton>
             </td>
@@ -178,6 +144,6 @@
   </Container>
 </template>
 <script lang="ts" setup>
-import calendarData from "./calendar.json";
-import { SfButton, SfInput } from "@storefront-ui/vue";
+import calendarData from './calendar.json';
+import { SfButton, SfInput } from '@storefront-ui/vue';
 </script>

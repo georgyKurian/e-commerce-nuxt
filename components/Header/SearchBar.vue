@@ -8,7 +8,7 @@
 .search {
   outline: none;
   border: 1px #f8f8f8;
-  background: #ededed url("@/images/search.png") no-repeat 5px center;
+  background: #ededed url('@/images/search.png') no-repeat 5px center;
   padding: 5px 8px 4px 26px;
   width: 10px;
   -webkit-border-radius: 10em;

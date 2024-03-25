@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]"
-  >
+  <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]">
     <div class="relative">
-      <SfLink
-        :href="`/products/${props.product.id}`"
-        :tag="NuxtLink"
-        class="block"
-      >
+      <SfLink :href="`/products/${props.product.id}`" :tag="NuxtLink" class="block">
         <NuxtImg
           :src="`images/products/${props.product.img}`"
           alt="Great product"
@@ -28,34 +22,20 @@
       </SfButton>
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <SfLink
-        :href="`/products/${props.product.id}`"
-        :tag="NuxtLink"
-        variant="secondary"
-        class="no-underline"
-      >
+      <SfLink :href="`/products/${props.product.id}`" :tag="NuxtLink" variant="secondary" class="no-underline">
         {{ props.product.title }}
       </SfLink>
       <div class="flex items-center pt-1">
         <SfRating size="xs" :value="5" :max="5" />
 
-        <SfLink
-          :href="`/products/${props.product.id}`"
-          :tag="NuxtLink"
-          variant="secondary"
-          class="pl-1 no-underline"
-        >
-          <SfCounter size="xs">123</SfCounter>
+        <SfLink :href="`/products/${props.product.id}`" :tag="NuxtLink" variant="secondary" class="pl-1 no-underline">
+          <SfCounter size="xs"> 123 </SfCounter>
         </SfLink>
       </div>
-      <p
-        class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700"
-      >
+      <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
         Lightweight • Non slip • Flexible outsole • Easy to wear on and off
       </p>
-      <span class="block pb-2 font-bold typography-text-lg">{{
-        props.product.price
-      }}</span>
+      <span class="block pb-2 font-bold typography-text-lg">{{ props.product.price }}</span>
       <SfButton size="sm" @click="mainStore.addToCart(props.product)">
         <template #prefix>
           <SfIconShoppingCart size="sm" />
@@ -67,15 +47,8 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  SfRating,
-  SfCounter,
-  SfLink,
-  SfButton,
-  SfIconShoppingCart,
-  SfIconFavorite,
-} from "@storefront-ui/vue";
-import { NuxtLink } from "#components";
+import { SfRating, SfCounter, SfLink, SfButton, SfIconShoppingCart, SfIconFavorite } from '@storefront-ui/vue';
+import { NuxtLink } from '#components';
 
 const mainStore = useMainStore();
 

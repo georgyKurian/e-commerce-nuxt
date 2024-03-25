@@ -16,9 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { SfButton, SfIconShoppingCart, SfBadge } from "@storefront-ui/vue";
+import { SfButton, SfIconShoppingCart, SfBadge } from '@storefront-ui/vue';
 
 const store = useMainStore();
 
-defineEmits(["open"]);
+defineEmits(['open']);
 </script>

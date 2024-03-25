@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import BreadCrumbs from "../BreadCrumbs.vue";
+import BreadCrumbs from '../BreadCrumbs.vue';
 const { t } = useI18n();
 
 const props = defineProps<{
@@ -13,8 +13,8 @@ const props = defineProps<{
 const productPath = computed(() => {
   return [
     {
-      name: t("Products"),
-      link: "/products",
+      name: t('Products'),
+      link: '/products',
     },
     {
       name: props.product.title,

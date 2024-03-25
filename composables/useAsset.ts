@@ -1,8 +1,8 @@
 export default function (path: string): string {
-  const assets = import.meta.glob("~/assets/**/*", {
+  const assets = import.meta.glob('~/assets/**/*', {
     eager: true,
-    import: "default",
+    import: 'default',
   });
   // @ts-expect-error: wrong type info
-  return assets["/images/" + path];
+  return assets['/images/' + path];
 }
