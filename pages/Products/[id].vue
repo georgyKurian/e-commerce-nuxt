@@ -2,20 +2,21 @@
   <Container v-if="product" class="py-5" style="padding-top: 70px">
     <!-- TODO dont allow accessing of the route to this page '/info' except if there is info to display -->
     <DetailsBreadcrumb :product="product" />
-    <div class="md:flex item-center justify-between gap-4">
-      <div class="w-1/2">
-        <ProductsGallery :product="product" />
+    <main>
+      <div class="md:flex item-center justify-between gap-4">
+        <div class="w-1/2">
+          <ProductsGallery :product="product" />
+        </div>
+        <div>
+          <ProductsBox :item="product" />
+        </div>
       </div>
-      <div>
-        <ProductsBox :item="product" />
-      </div>
-    </div>
-    <DetailsText />
+      <ProductsContent :product="product" class="my-8" />
+    </main>
 
     <div class="related-item">
-      <hr />
-      <h6 class="pb-4">
-        {{ $t('RELATED PRODUCTS') }}
+      <h6 class="text-xl font-bold mb-2">
+        {{ $t('Related Products') }}
       </h6>
       <ClientOnly>
         <ProductsSlider :products="relatedProducts" />
