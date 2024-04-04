@@ -15,6 +15,7 @@ const useMainStore = defineStore('main', {
     cart: [],
   }),
   getters: {
+    isAuthenticated: ({ user }): boolean => !!user,
     cartItemsCount: ({ cart }): number => cart.length,
     cartItemsCountText: ({ cart }): string => (cart.length > 100 ? '99+' : cart.length.toString()),
     cartTotalPrice: ({ cart }): number | undefined => {
@@ -29,6 +30,30 @@ const useMainStore = defineStore('main', {
     },
   },
   actions: {
+    async fetchUser() {
+      const { data } = await useQualifyAPI('api/v1/user', { method: 'GET' });
+
+      if (data?.value?.data) {
+        this.user = data.value.data;
+        return true;
+      }
+      return false;
+    },
+    async login(email: string, password: string) {},
+    async logout() {
+      debugger;
+      const { status } = await useQualifyAPI('logout', { method: 'POST' });
+
+      if (status?.value === 'success') {
+        this.$reset();
+        return true;
+      }
+      return false;
+    },
+    resetData() {
+      this.user = null;
+      this.cart = [];
+    },
     addToCart(item: typeof CartItem) {
       return this.cart.push(item);
     },
@@ -37,6 +62,7 @@ const useMainStore = defineStore('main', {
       return this.cart.splice(index, 1);
     },
   },
+  persist: true,
 });
 
 export default useMainStore;

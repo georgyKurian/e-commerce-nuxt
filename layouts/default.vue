@@ -6,6 +6,7 @@
     </div>
     <Newsletter v-if="route.path != '/contact'" />
     <Footer />
+    <AuthLogin />
   </div>
 </template>
 

@@ -1,5 +1,4 @@
 var fs = require('fs');
-var chalk = require('chalk');
 
 module.exports = {
   input: [
@@ -56,25 +55,27 @@ module.exports = {
   },
   transform: function customTransform(file, enc, done) {
     'use strict';
-    var parser = this.parser;
-    var content = fs.readFileSync(file.path, enc);
-    var count = 0;
+    import('chalk').then((chalk) => {
+      var parser = this.parser;
+      var content = fs.readFileSync(file.path, enc);
+      var count = 0;
 
-    parser.parseFuncFromString(content, { list: ['i18next._', 'i18next.__'] }, (key, options) => {
-      parser.set(
-        key,
-        Object.assign({}, options, {
-          nsSeparator: false,
-          keySeparator: false,
-        }),
-      );
-      ++count;
+      parser.parseFuncFromString(content, { list: ['i18next._', 'i18next.__'] }, (key, options) => {
+        parser.set(
+          key,
+          Object.assign({}, options, {
+            nsSeparator: false,
+            keySeparator: false,
+          }),
+        );
+        ++count;
+      });
+
+      if (count > 0) {
+        console.log(`i18next-scanner: count=${chalk.cyan(count)}, file=${chalk.yellow(JSON.stringify(file.relative))}`);
+      }
+
+      done();
     });
-
-    if (count > 0) {
-      console.log(`i18next-scanner: count=${chalk.cyan(count)}, file=${chalk.yellow(JSON.stringify(file.relative))}`);
-    }
-
-    done();
   },
 };
