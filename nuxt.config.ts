@@ -9,6 +9,16 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
     },
   },
+  devServer: {
+    host: 'lunar.test',
+    port: 3000,
+    url: 'http://lunar.test',
+  },
+  runtimeConfig: {
+    public: {
+      qualifyUrl: '',
+    },
+  },
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://vue-ecom.vercel.app',
     name: 'Worksitesafety',
@@ -37,6 +47,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
+    '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/eslint-module',
   ],
   i18n: {
@@ -71,7 +82,7 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ['defineStore', ['defineStore', 'definePiniaStore']],
   },
-  css: ['/assets/styles/main.scss'],
+  // css: ['/assets/styles/main.scss'],
   assetsInclude: ['/assets/*/*.jpg'],
   render: {
     csp: {

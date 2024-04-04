@@ -18,5 +18,15 @@
   "Store details": null,
   "Select Store": null,
   ":city, :province": null,
-  "{city}, {province}": null
+  "{city}, {province}": null,
+  "Search": null,
+  "Dark Mode": null,
+  "Light Mode": null,
+  "Sign in / Register": null,
+  "Orders & Accounts": null,
+  "Hello, {name}": null,
+  "Description": null,
+  "Outline": null,
+  "Features": null,
+  "Related Products": null
 }

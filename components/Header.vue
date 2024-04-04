@@ -53,7 +53,6 @@
         <nav class="flex flex-nowrap justify-end items-center md:ml-10 gap-x-1">
           <HeaderDarkModeToggleButton />
           <HeaderLocaleButton />
-          <HeaderCartButton @open="cartState" />
           <HeaderProfileButton />
           <SfButton
             v-for="actionItem in actionItems"
@@ -70,6 +69,7 @@
               {{ actionItem.label }}
             </p>
           </SfButton>
+          <HeaderCartButton @open="cartState" />
         </nav>
         <form role="search" class="flex md:hidden flex-[100%] my-2" @submit.prevent="search">
           <SfInput
