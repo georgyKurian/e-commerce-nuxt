@@ -7,12 +7,8 @@
 </template>
 
 <script setup lang="ts">
-function imageUrl(file: string) {
-  return `_nuxt/assets/${file}`;
-}
-
 const props = defineProps<{
-  productList: Product[];
+  productList: (typeof Product)[];
 }>();
 </script>
 

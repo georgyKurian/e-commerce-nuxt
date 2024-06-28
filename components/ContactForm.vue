@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container-fluid py-5">
-      <div class="row d-flex">
+      <div class="row flex">
         <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 order-sm-0 order-12" style="margin-right: -120px">
           <img class="img-fluid" src="/images/speaker.jpg" alt="speaker" title="speaker" />
         </div>

@@ -51,9 +51,9 @@
           </SfInput>
         </form>
         <nav class="flex flex-nowrap justify-end items-center md:ml-10 gap-x-1">
-          <HeaderDarkModeToggleButton />
-          <HeaderLocaleButton />
-          <HeaderProfileButton />
+          <LayoutHeaderDarkModeToggleButton />
+          <LayoutHeaderLocaleButton />
+          <LayoutHeaderProfileButton />
           <SfButton
             v-for="actionItem in actionItems"
             :key="actionItem.ariaLabel"
@@ -69,7 +69,7 @@
               {{ actionItem.label }}
             </p>
           </SfButton>
-          <HeaderCartButton @open="cartState" />
+          <LayoutHeaderCartButton @open="cartState" />
         </nav>
         <form role="search" class="flex md:hidden flex-[100%] my-2" @submit.prevent="search">
           <SfInput
@@ -99,7 +99,7 @@
         <!--User Modal-->
         <!-- <HeaderUserModal /> -->
         <!--Cart Component-->
-        <HeaderCart :is-open="cart" @close-cart="cartState" />
+        <LayoutHeaderCart :is-open="cart" @close-cart="cartState" />
       </div>
       <!-- Desktop dropdown -->
       <nav ref="floatingRef">
@@ -255,9 +255,7 @@
 
 <script lang="ts" setup>
 import {
-  SfIconShoppingCart,
   SfIconFavorite,
-  SfIconPerson,
   SfIconClose,
   SfButton,
   SfDrawer,
@@ -272,9 +270,9 @@ import {
   SfInput,
   SfIconSearch,
 } from '@storefront-ui/vue';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { unrefElement } from '@vueuse/core';
-import MenuData from './MenuData';
+import MenuData from '../../components/MenuData';
 
 const cart = ref(false);
 

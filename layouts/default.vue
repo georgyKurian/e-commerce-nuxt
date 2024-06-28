@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <LayoutHeader />
     <div id="layout" class="mx-auto bg-gray-50 dark:bg-gray-900">
       <slot />
     </div>

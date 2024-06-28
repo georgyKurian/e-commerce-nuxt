@@ -25,12 +25,14 @@ export default defineNuxtConfig({
     description: 'Worksitesafety storefront',
     indexable: process.env.NUXT_SITE_ENV === 'production',
   },
+  axios: {
+    baseURL: 'https://api.example.com', // Your API base URL
+  },
   sourcemap: true,
   imports: {
     dirs: ['store', 'types', 'autoImports', '@vueuse/nuxt'],
   },
   alias: {
-    '~': '/<srcDir>',
     '@': '/<srcDir>',
     '~~': '/<rootDir>',
     '@@': '/<rootDir>',
@@ -38,15 +40,17 @@ export default defineNuxtConfig({
     public: '/<srcDir>/public',
     types: '/<srcDir>/types',
     images: fileURLToPath(new URL('./assets', import.meta.url)),
+    models: fileURLToPath(new URL('./models', import.meta.url)),
   },
   modules: [
     '@nuxt/content',
     '@nuxt/devtools',
-    '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
+    '@pinia/nuxt',
+    //'@pinia-orm/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/eslint-module',
   ],
