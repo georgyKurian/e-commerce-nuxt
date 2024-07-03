@@ -5,7 +5,7 @@
     <main>
       <div class="md:flex item-center justify-between gap-4">
         <div class="w-1/2">
-          <ProductsGallery :product="product" />
+          <ProductsGallery :images="product.images" />
         </div>
         <div>
           <ProductsBox :item="product" />

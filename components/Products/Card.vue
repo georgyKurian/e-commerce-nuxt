@@ -3,7 +3,7 @@
     <div class="relative">
       <SfLink :href="`/products/${props.product.id}`" :tag="NuxtLink" class="block">
         <NuxtImg
-          :src="`images/products/${props.product.img}`"
+          :src="`${props.product.thumbnail.original_url}`"
           alt="Great product"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
