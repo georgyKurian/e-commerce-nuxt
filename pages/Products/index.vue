@@ -1,6 +1,7 @@
 <template>
   <div class="container mx-auto py-4 md:py-8">
     <div class="">
+      <SfButton @click="onClick">Fetch</SfButton>
       <div v-if="grid.cards.length !== 0" class="flex flex-row py-3">
         <ProductsFilterBar class="w-3/12 mr-2 md:block" />
 
@@ -17,8 +18,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { SfButton } from '@storefront-ui/vue';
 const { t } = useI18n();
-const store = useProductsStore();
+const productStore = useProductsStore();
+console.log(productStore.items);
 
 useHead({
   title: t('Shop'),
@@ -30,7 +33,11 @@ const grid = reactive({
   showCards: 6,
 });
 
-grid.cards = store.items;
+await useAsyncData('products.index', () => productStore.fetchProducts());
+watchEffect(() => {
+  grid.cards = productStore.items;
+});
+
 const slicedCards = computed(() => grid.cards.slice(0, grid.showCards));
 
 const sortItems = (value) => {
@@ -41,4 +48,7 @@ const sortItems = (value) => {
   });
   return (grid.sortButton = value.toUpperCase());
 };
+async function onClick() {
+  productStore.fetchProducts();
+}
 </script>

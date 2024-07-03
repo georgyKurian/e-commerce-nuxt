@@ -41,7 +41,6 @@ const useMainStore = defineStore('main', {
     },
     async login(email: string, password: string) {},
     async logout() {
-      debugger;
       const { status } = await useQualifyAPI('logout', { method: 'POST' });
 
       if (status?.value === 'success') {

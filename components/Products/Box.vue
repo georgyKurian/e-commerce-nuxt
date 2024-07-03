@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row mb-5">
-      <div class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center justify-content-start">
+      <div class="col6 col-xl-6 col-lg-6 col-md-12 col-sm-12 flex align-items-center justify-content-start">
         <div class="info pt-xl-0 pt-lg-0 pt-5">
           <h1 class="text-3xl font-bold font-weight-bold text-uppercase pt-3">
             {{ item.title }}
@@ -11,7 +11,7 @@
           </div>
           <h6 style="width: 190px">3 reviews</h6>
           <h4 class="my-4">
-            <Price :value="item.price" class="font-bold text-xl" />
+            <Price :value="item.variants[0].price.base.value" class="font-bold text-xl" />
           </h4>
           <Datepicker
             v-if="item.type === 'online'"

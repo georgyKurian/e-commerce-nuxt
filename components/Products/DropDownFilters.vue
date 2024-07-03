@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="flex">
     <div class="dropdown flex-fill px-4 px-sm-0">
       <a
         id="dropdownMenuLink"

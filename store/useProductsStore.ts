@@ -1,172 +1,26 @@
 import { defineStore } from 'pinia';
 
 const useProductsStore = defineStore('products', {
-  state: (): typeof ProductStore => ({
-    productInfo: {},
-    items: [
-      {
-        id: 0,
-        img: '1.jpg',
-        title: 'WHMIS',
-        price: 2495,
-        color: 'yellow',
-        type: 'online',
-      },
-      {
-        id: 1,
-        img: '2.jpg',
-        title: 'Fall Protection',
-        price: 5495,
-        color: 'yellow',
-        type: 'online',
-      },
-      {
-        id: 2,
-        img: '3.jpg',
-        title: 'TDG by Ground',
-        price: 2495,
-        color: 'yellow',
-        type: 'online',
-      },
-      {
-        id: 3,
-        img: '4.jpg',
-        title: 'Elevating Work Platforms',
-        price: 4495,
-        color: 'red',
-        type: 'online',
-      },
-      {
-        id: 4,
-        img: '5.jpg',
-        title: 'Camel Back',
-        price: 243,
-        color: 'white',
-        type: 'equipment',
-        in_stock: true,
-        quantity: 5,
-        stores: [
-          {
-            id: 1,
-            name: 'Hamilton Store',
-            quantity: 5,
-            google_store_code: '100',
-            address: {
-              street: '123 Main St',
-              city: 'Hamilton',
-              province: 'ON',
-              postal_code: 'L8J 2B7',
-            },
-          },
-          {
-            id: 2,
-            name: 'Burlington Store',
-            quantity: 5,
-            google_store_code: '101',
-            address: {
-              street: '123 Main St',
-              city: 'Burlington',
-              province: 'ON',
-              postal_code: 'L9J 2B7',
-            },
-          },
-          {
-            id: 3,
-            name: 'York Training Center',
-            quantity: 5,
-            google_store_code: '102',
-            address: {
-              street: '123 Main St',
-              city: 'York',
-              province: 'ON',
-              postal_code: 'L3J 2B7',
-            },
-          },
-        ],
-      },
-      {
-        id: 5,
-        img: '6.jpg',
-        title: 'Stool',
-        price: 44,
-        color: 'white',
-        type: 'chair',
-      },
-      {
-        id: 6,
-        img: '7.jpg',
-        title: 'Windsor chair',
-        price: 505,
-        color: 'blue',
-        type: 'chair',
-      },
-      {
-        id: 7,
-        img: '8.jpg',
-        title: 'C-table',
-        price: 432,
-        color: 'red',
-        type: 'table',
-      },
-      {
-        id: 8,
-        img: '9.jpg',
-        title: 'Coffee Table',
-        price: 390,
-        color: 'white',
-        type: 'table',
-      },
-      {
-        id: 9,
-        img: '10.jpg',
-        title: 'Desk Chair',
-        price: 756,
-        color: 'yellow',
-        type: 'chair',
-      },
-      {
-        id: 10,
-        img: '11.jpg',
-        title: 'Garden Chair',
-        price: 44,
-        color: 'white',
-        type: 'chair',
-      },
-      {
-        id: 11,
-        img: '12.jpg',
-        title: 'Novelty',
-        price: 156,
-        color: 'red',
-        type: 'lamp',
-      },
-      {
-        id: 12,
-        img: '13.jpg',
-        title: 'Lava',
-        price: 756,
-        color: 'blue',
-        type: 'lamp',
-      },
-      {
-        id: 13,
-        img: '14.jpg',
-        title: 'Deck Chair',
-        price: 756,
-        color: 'white',
-        type: 'chair',
-      },
-      {
-        id: 14,
-        img: 'table-1.jpg',
-        title: 'Accent Table',
-        price: 756,
-        color: 'white',
-        type: 'table',
-      },
-    ],
-  }),
+  state: (): typeof ProductStore => {
+    const { data, pending } = useQualifyAPI('api/v1/products');
+    return {
+      productInfo: {},
+      isFetching: pending,
+      items: data?.value?.data ?? [],
+    };
+  },
   actions: {
+    async fetchProducts() {
+      const { data, pending } = await useQualifyAPI('api/v1/products');
+      this.isFetching = pending;
+      if (data.value?.data) this.items = data.value.data;
+    },
+    async fetchProduct(id: number) {
+      this.productInfo = this.items[id] ?? {};
+      const { data, pending } = await useQualifyAPI('api/v1/products/' + id);
+      this.isFetching = pending;
+      if (data.value?.data) this.productInfo = data.value.data;
+    },
     addtoInfo(n: number) {
       const selectedProduct = this.items.find((item) => item.id === n);
       this.productInfo = selectedProduct!;

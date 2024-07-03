@@ -17,7 +17,7 @@ const productPath = computed(() => {
       link: '/products',
     },
     {
-      name: props.product.title,
+      name: props.product.attribute_data.name.en,
       link: `/products/${props.product.id}`,
     },
   ];

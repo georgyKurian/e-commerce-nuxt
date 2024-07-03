@@ -7,7 +7,7 @@ export default defineNuxtPlugin(() => {
 
       // Add Authorization header
       options.headers = options.headers || ({} as Record<string, string>);
-      options.headers['Accept'] = 'application/json';
+      //options.headers['Accept'] = 'application/json';
       options.headers[`X-Requested-With`] = 'XMLHttpRequest';
       if (token.value) {
         options.headers[`X-XSRF-TOKEN`] = token.value;

@@ -23,7 +23,7 @@
     </div>
     <div class="p-4 border-t border-neutral-200">
       <SfLink :href="`/products/${props.product.id}`" :tag="NuxtLink" variant="secondary" class="no-underline">
-        {{ props.product.title }}
+        {{ props.product.attribute_data.name.en }}
       </SfLink>
       <div class="flex items-center pt-1">
         <SfRating size="xs" :value="5" :max="5" />
@@ -35,7 +35,7 @@
       <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
         Lightweight • Non slip • Flexible outsole • Easy to wear on and off
       </p>
-      <span class="block pb-2 font-bold typography-text-lg">{{ props.product.price }}</span>
+      <Price class="block pb-2 font-bold typography-text-lg" :value="props.product.variants[0].price.base.value" />
       <SfButton size="sm" @click="mainStore.addToCart(props.product)">
         <template #prefix>
           <SfIconShoppingCart size="sm" />

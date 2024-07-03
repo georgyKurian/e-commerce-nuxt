@@ -1,6 +1,6 @@
-import type Product from './Product';
+import type ProductType from './ProductType';
 
 export default interface State {
-  productInfo: Product | null;
-  items: Product[];
+  productInfo: typeof ProductType | null;
+  items: ProductType[];
 }
