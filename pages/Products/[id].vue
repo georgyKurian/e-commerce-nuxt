@@ -18,9 +18,7 @@
       <h6 class="text-xl font-bold mb-2">
         {{ $t('Related Products') }}
       </h6>
-      <ClientOnly>
-        <ProductsSlider :products="relatedProducts" />
-      </ClientOnly>
+      <ProductsSlider :products="relatedProducts" />
     </div>
   </Container>
 </template>
