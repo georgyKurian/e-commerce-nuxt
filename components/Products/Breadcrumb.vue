@@ -9,8 +9,7 @@ const { t } = useI18n();
 const props = defineProps<{
   product: typeof Product;
 }>();
-
-const productPath = computed(() => {
+const productPath: ComputedRef<{ name: string; link: string }[]> = computed(() => {
   return [
     {
       name: t('Products'),

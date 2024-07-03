@@ -15,6 +15,12 @@ const useProductsStore = defineStore('products', {
       this.isFetching = pending;
       if (data.value?.data) this.items = data.value.data;
     },
+    async fetchProduct(id: number) {
+      this.productInfo = this.items[id] ?? {};
+      const { data, pending } = await useQualifyAPI('api/v1/products/' + id);
+      this.isFetching = pending;
+      if (data.value?.data) this.productInfo = data.value.data;
+    },
     addtoInfo(n: number) {
       const selectedProduct = this.items.find((item) => item.id === n);
       this.productInfo = selectedProduct!;

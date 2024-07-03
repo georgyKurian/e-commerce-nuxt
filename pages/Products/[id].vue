@@ -31,7 +31,11 @@ const route = useRoute();
 const itemId = Number(route.params.id);
 let product: typeof Product = ref(null);
 
-product = productStore.items[itemId];
+await useAsyncData('products.get', () => productStore.fetchProduct(itemId));
+
+watchEffect(() => {
+  product = productStore.productInfo;
+});
 
 useHead({
   name: product?.title,

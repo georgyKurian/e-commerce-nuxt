@@ -33,7 +33,7 @@ const grid = reactive({
   showCards: 6,
 });
 
-await useAsyncData('user', () => productStore.fetchProducts());
+await useAsyncData('products.index', () => productStore.fetchProducts());
 watchEffect(() => {
   grid.cards = productStore.items;
 });

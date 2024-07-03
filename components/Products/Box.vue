@@ -11,7 +11,7 @@
           </div>
           <h6 style="width: 190px">3 reviews</h6>
           <h4 class="my-4">
-            <Price :value="item.price" class="font-bold text-xl" />
+            <Price :value="item.variants[0].price.base.value" class="font-bold text-xl" />
           </h4>
           <Datepicker
             v-if="item.type === 'online'"
