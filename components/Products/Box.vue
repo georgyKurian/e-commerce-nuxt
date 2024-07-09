@@ -14,7 +14,7 @@
             <Price :value="item.variants[0].price.base.value" class="font-bold text-xl" />
           </h4>
           <Datepicker
-            v-if="item.type === 'online'"
+            v-if="item.product_type_id === ProductTypeEnum.INSTRUCTOR_LED_COURSE"
             v-model="date"
             :allowed-dates="allowedDates"
             format="MMM d, yyyy"
@@ -38,6 +38,7 @@
 import { SfButton, SfInput, SfRating } from '@storefront-ui/vue';
 import '@vuepic/vue-datepicker/dist/main.css';
 import Datepicker from '@vuepic/vue-datepicker';
+import ProductTypeEnum from '@/enums/ProductTypeEnum';
 
 const mainStore = useMainStore();
 const quantity: number | string = defineModel<number>('quantity', {
