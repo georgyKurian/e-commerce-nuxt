@@ -43,6 +43,7 @@ useHead({
 const quantity = ref(1);
 const relatedProducts = computed(() => {
   const relatedItems = [];
+  if (productStore.items.length <= 3) return productStore.items;
   for (let i = 0; i < 3; i++) {
     const randomIndex = Math.floor(Math.random() * productStore.items.length);
     relatedItems.push(productStore.items[randomIndex]);
