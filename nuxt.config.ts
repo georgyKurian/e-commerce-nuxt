@@ -33,9 +33,6 @@ export default defineNuxtConfig({
     dirs: ['store', 'types', 'autoImports', '@vueuse/nuxt'],
   },
   alias: {
-    '@': '/<srcDir>',
-    '~~': '/<rootDir>',
-    '@@': '/<rootDir>',
     assets: fileURLToPath(new URL('./assets', import.meta.url)),
     public: '/<srcDir>/public',
     types: '/<srcDir>/types',
