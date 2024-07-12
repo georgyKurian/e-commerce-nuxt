@@ -41,7 +41,7 @@ import Datepicker from '@vuepic/vue-datepicker';
 import ProductTypeEnum from '@/enums/ProductTypeEnum';
 
 const mainStore = useMainStore();
-const quantity: number | string = defineModel<number>('quantity', {
+const quantity = defineModel('quantity', {
   type: Number,
   default: 1,
 });
