@@ -14,7 +14,7 @@
       <ProductsContent :product="product" class="my-8" />
     </main>
 
-    <div class="related-item">
+    <div v-if="relatedProducts.length > 0" class="related-item">
       <h6 class="text-xl font-bold mb-2">
         {{ $t('Related Products') }}
       </h6>
