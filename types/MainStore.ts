@@ -1,4 +1,4 @@
-export default interface MainStore {
-  user: User | null;
-  cart: ProductType[];
+export interface MainStore {
+  user: typeof User | null;
+  cart: (typeof CartItem)[];
 }

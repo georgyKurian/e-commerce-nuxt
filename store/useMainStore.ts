@@ -1,13 +1,6 @@
 import { CartItem } from '#build/components';
 import { defineStore } from 'pinia';
-import { MainStore, Product } from '~/types/types';
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-  declaration: boolean;
-  global: boolean;
-}
+import type { MainStore } from '~/types/MainStore';
 
 const useMainStore = defineStore('main', {
   state: (): MainStore => ({
@@ -30,30 +23,11 @@ const useMainStore = defineStore('main', {
     },
   },
   actions: {
-    async fetchUser() {
-      const { data } = await useQualifyAPI('api/v1/user', { method: 'GET' });
-
-      if (data?.value?.data) {
-        this.user = data.value.data;
-        return true;
-      }
-      return false;
-    },
-    async login(email: string, password: string) {},
-    async logout() {
-      const { status } = await useQualifyAPI('logout', { method: 'POST' });
-
-      if (status?.value === 'success') {
-        this.$reset();
-        return true;
-      }
-      return false;
-    },
     resetData() {
       this.user = null;
       this.cart = [];
     },
-    addToCart(item: typeof CartItem) {
+    addToCart(product: typeof Product, quantity: number, declaration: boolean, global: boolean) {
       return this.cart.push(item);
     },
     removeFromCart(cartItemId: number) {
