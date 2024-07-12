@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { SfButton } from '@storefront-ui/vue';
+import { SfButton } from '@storefront-ui/vue';
 const { t } = useI18n();
 const productStore = useProductsStore();
 console.log(productStore.items);
@@ -34,6 +34,7 @@ const grid = reactive({
 });
 
 await useAsyncData('products.index', () => productStore.fetchProducts());
+
 watchEffect(() => {
   grid.cards = productStore.items;
 });

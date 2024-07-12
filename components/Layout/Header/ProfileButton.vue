@@ -44,25 +44,41 @@
       </SfButton>
     </template>
     <ul class="p-2 rounded bg-gray-100 w-40">
-      <li>My Account</li>
-      <li>Settings</li>
+      <li><SfLink>My Account</SfLink></li>
+      <li><SfLink>Settings</SfLink></li>
       <li><SfButton @click.stop="logout">Logout</SfButton></li>
     </ul>
   </SfDropdown>
 </template>
 <script setup lang="ts">
 import { SfButton } from '@storefront-ui/vue';
-import { SfDropdown, useDisclosure } from '@storefront-ui/vue';
+import { SfDropdown, useDisclosure, SfLink, SfIconPerson } from '@storefront-ui/vue';
 
 const { isOpen, toggle, open, close } = useDisclosure();
 const store = useMainStore();
+const loginBus = useEventBus();
+const sanctumUser = useSanctumUser<User>();
 
-const emitter = useEventBus();
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 function openLoginForm() {
-  emitter.emit('open-login-modal');
+  loginBus.emit('open-login-modal');
 }
 function logout() {
-  store.logout();
+  sanctumUser.value = null;
+  store.resetData();
 }
+
+// Watch for changes in sanctumUser and update store.user accordingly
+watch(
+  sanctumUser,
+  (newValue, oldValue) => {
+    store.user = newValue; // Assuming store has a user property that you want to update
+  },
+  { deep: true },
+); // Use deep watch if sanctumUser is an object to detect nested changes
 </script>

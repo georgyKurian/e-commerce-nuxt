@@ -3,45 +3,28 @@ export default defineNuxtPlugin(() => {
     baseURL: useRuntimeConfig().public.qualifyUrl,
     credentials: 'include',
     onRequest({ request, options, error }) {
-      const token = useCookie('XSRF-TOKEN');
-
-      // Add Authorization header
-      options.headers = options.headers || ({} as Record<string, string>);
-      //options.headers['Accept'] = 'application/json';
-      options.headers[`X-Requested-With`] = 'XMLHttpRequest';
-      if (token.value) {
-        options.headers[`X-XSRF-TOKEN`] = token.value;
+      const csrfToken = useCookie('XSRF-TOKEN');
+      options.headers = options.headers || ({} as HeadersInit);
+      (options.headers as Record<string, string>)['Accept'] = 'application/json';
+      (options.headers as Record<string, string>)['Content-Type'] = 'application/json';
+      if (
+        csrfToken &&
+        csrfToken.value != null &&
+        options.method &&
+        !['HEAD', 'GET', 'OPTIONS'].includes(options.method)
+      ) {
+        (options.headers as Record<string, string>)['X-XSRF-TOKEN'] = csrfToken.value;
       }
     },
     onResponseError({ response }) {
       if (response.status === 401) {
-        return navigateTo('/login');
+        navigateTo('/login');
       }
     },
   });
-  // Expose to useNuxtApp().$qualifyApi
   return {
     provide: {
       qualifyApi: $api,
     },
   };
 });
-
-// export default defineNuxtPlugin({
-//   setup() {
-//     const api = $fetch.create({
-//       baseURL: useRuntimeConfig().public.qualifyUrl,
-//       credentials: 'include',
-//       ...options,
-//       headers: {
-//         ...headers,
-//         ...options?.headers,
-//       },
-//       $fetch: useNuxtApp().$sanctumApiFetch,
-//     });
-
-//     return {
-//       provide: { api },
-//     };
-//   },
-// });

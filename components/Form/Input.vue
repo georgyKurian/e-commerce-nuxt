@@ -27,7 +27,12 @@
     <div class="flex justify-between">
       <div>
         <p v-if="props.invalid && !props.disabled" class="text-sm text-negative-700 font-medium mt-0.5">
-          {{ props.errorText }}
+          <template v-if="props.errorText?.length">
+            <span v-for="(error, index) in props.errorText" :key="index">
+              {{ error }}
+            </span>
+          </template>
+          <template v-else>{{ props.errorText }}</template>
         </p>
         <p
           v-if="props.helpText"
@@ -71,7 +76,7 @@ const props = defineProps<{
   helpText?: string;
   label?: string;
   hideLabel?: boolean;
-  errorText?: string;
+  errorText?: string | string[];
 }>();
 
 const modelValue: number | string = defineModel<string, number>();

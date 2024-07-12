@@ -9,10 +9,15 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
     },
   },
+  sanctum: {
+    baseUrl: process.env.NUXT_PUBLIC_QUALIFY_URL,
+    origin: process.env.NUXT_PUBLIC_SITE_URL,
+    endpoints: { user: 'api/v1/user' },
+  },
   devServer: {
     host: 'lunar.test',
     port: 3000,
-    url: 'http://lunar.test',
+    url: 'https://lunar.test',
   },
   runtimeConfig: {
     public: {
@@ -26,7 +31,8 @@ export default defineNuxtConfig({
     indexable: process.env.NUXT_SITE_ENV === 'production',
   },
   axios: {
-    baseURL: 'https://api.example.com', // Your API base URL
+    baseURL: process.env.NUXT_PUBLIC_QUALIFY_URL, // Your API base URL
+    credentials: true,
   },
   sourcemap: true,
   imports: {
@@ -50,6 +56,7 @@ export default defineNuxtConfig({
     //'@pinia-orm/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/eslint-module',
+    'nuxt-auth-sanctum',
   ],
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default

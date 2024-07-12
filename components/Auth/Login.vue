@@ -45,6 +45,8 @@
             class="form-control"
             placeholder="email"
             required
+            :invalid="!!errors?.email"
+            :error-text="errors?.email"
           />
 
           <div>
@@ -55,6 +57,8 @@
               placeholder="password"
               autocomplete="current-password"
               required
+              :invalid="!!errors?.password"
+              :error-text="errors?.password"
             />
             <NuxtLink href="/forgot-password" class="text-primary-700 block text-sm mt-1">
               Reset your password?
@@ -78,10 +82,12 @@ import { onMounted } from 'vue';
 const { isOpen, open, close } = useDisclosure({ initialValue: false });
 const emitter = useEventBus();
 const store = useMainStore();
+const { login } = useSanctumAuth();
+const errors = ref<Record<string, string[]>>({});
 
 onMounted(async () => {
-  await store.fetchUser();
   emitter.on('open-login-modal', () => open());
+  emitter.on('close-login-modal', () => close());
 });
 
 watchEffect(async () => {
@@ -93,14 +99,18 @@ watchEffect(async () => {
 const form = ref({
   email: 'georgi@worksite.ca',
   password: 'password',
+  remember: true,
 });
 
 async function handleLogin() {
-  const token = useCookie('XSRF-TOKEN');
-  if (!token?.value) {
-    await useQualifyAPI('sanctum/csrf-cookie', {});
+  try {
+    await login(form.value);
+    close();
+  } catch (e) {
+    const { isValidationError, bag } = useApiError(e);
+    if (isValidationError) {
+      errors.value = bag;
+    }
   }
-  const { data } = await useQualifyAPI('login', { method: 'POST', watch: false, body: form.value });
-  store.fetchUser();
 }
 </script>

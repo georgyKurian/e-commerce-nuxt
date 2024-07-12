@@ -31,6 +31,7 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "i18next-scanner": "^4.4.0",
     "nuxt": "^3.5.3",
+    "nuxt-auth-sanctum": "^0.4.2",
     "sass": "^1.71.1",
     "typescript": "^5.3.3",
     "vue-tsc": "^2.0.7"
