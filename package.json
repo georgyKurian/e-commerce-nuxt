@@ -2,6 +2,7 @@
   "name": "v-store",
   "description": "A Full StoreFront build with Nuxt3",
   "private": false,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -45,6 +46,7 @@
     "@vuepic/vue-datepicker": "^8.3.1",
     "axios": "^1.6.8",
     "bootstrap": "^5.2.3",
+    "node": "^18.20.4",
     "pinia": "^2.0.34",
     "pinia-orm": "^1.7.2",
     "prettier": "^3.2.5",
