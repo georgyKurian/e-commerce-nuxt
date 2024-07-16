@@ -27,8 +27,16 @@ const useMainStore = defineStore('main', {
       this.user = null;
       this.cart = [];
     },
-    addToCart(product: typeof Product, quantity: number, declaration: boolean, global: boolean) {
-      return this.cart.push(item);
+    async addToCart(productVariant: typeof Product, quantity: number) {
+      const client = useSanctumClient();
+      try {
+        const { data } = await client('api/v1/cart/add', {
+          method: 'POST',
+          body: { product_variant: productVariant, quantity },
+        });
+      } catch (e) {
+        console.log('error fetch', e);
+      }
     },
     removeFromCart(cartItemId: number) {
       const index = this.cart.findIndex((cartItem: typeof CartItem) => cartItem.id === cartItemId);

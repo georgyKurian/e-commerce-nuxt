@@ -16,7 +16,8 @@ export default defineNuxtConfig({
   },
   devServer: {
     host: 'lunar.test',
-    url: 'https://lunar.test',
+    url: 'https://lunar.test:3000',
+    port: 3000,
     https: {
       key: './server.key',
       cert: './server.crt',
