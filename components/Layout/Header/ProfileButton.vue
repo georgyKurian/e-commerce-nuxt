@@ -46,7 +46,9 @@
     <ul class="p-2 rounded bg-gray-100 w-40">
       <li><SfLink>My Account</SfLink></li>
       <li><SfLink>Settings</SfLink></li>
-      <li><SfButton @click.stop="logout">Logout</SfButton></li>
+      <li>
+        <SfButton @click.stop="handleLogout">{{ $t('Logout') }}</SfButton>
+      </li>
     </ul>
   </SfDropdown>
 </template>
@@ -58,6 +60,7 @@ const { isOpen, toggle, open, close } = useDisclosure();
 const store = useMainStore();
 const loginBus = useEventBus();
 const sanctumUser = useSanctumUser<User>();
+const { logout } = useSanctumAuth();
 
 interface User {
   id: number;
@@ -68,7 +71,8 @@ interface User {
 function openLoginForm() {
   loginBus.emit('open-login-modal');
 }
-function logout() {
+function handleLogout() {
+  logout();
   sanctumUser.value = null;
   store.resetData();
 }
