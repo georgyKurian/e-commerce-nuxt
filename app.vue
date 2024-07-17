@@ -17,19 +17,12 @@ onBeforeMount(async () => {
   mainStore.user = sanctumUser;
 });
 
-watch(
-  mainStore.user,
-  async () => {
-    await mainStore.fetchCart();
-  },
-  { deep: true },
-);
-
 // Watch for changes in sanctumUser and update store.user accordingly
 watch(
   sanctumUser,
-  (newValue) => {
+  async (newValue) => {
     mainStore.user = newValue;
+    mainStore.fetchCart();
   },
   { deep: true },
 );
