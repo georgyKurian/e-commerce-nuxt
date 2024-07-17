@@ -72,13 +72,4 @@ function logout() {
   sanctumUser.value = null;
   store.resetData();
 }
-
-// Watch for changes in sanctumUser and update store.user accordingly
-watch(
-  sanctumUser,
-  (newValue, oldValue) => {
-    store.user = newValue; // Assuming store has a user property that you want to update
-  },
-  { deep: true },
-); // Use deep watch if sanctumUser is an object to detect nested changes
 </script>

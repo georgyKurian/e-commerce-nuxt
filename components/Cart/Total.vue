@@ -1,17 +1,37 @@
 <template>
-  <div class="row align-items-center p-2" style="background: #7dcf85">
-    <div class="col pl-3 pt-3">
-      <h4>{{ $t('Subtotal') }}</h4>
-      <p class="fs-6 px-3" style="color: #303e49; margin-top: -8px">
-        {{ $t('({itemsCount} items)', { itemsCount: store.cartItemsCount }) }}
-      </p>
+  <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+    <div class="flex justify-between text-base font-medium text-gray-900">
+      <p>{{ $t('Sub Total') }}</p>
+      <price :value="mainStore.cart.calculated.subTotal.value" />
     </div>
-    <div class="col text-center pr-3">
-      <h4><price :value="store.cartTotalPrice" /></h4>
+    <div
+      v-if="mainStore.cart.calculated.discountTotal.value > 0"
+      class="flex justify-between text-base font-medium text-gray-900"
+    >
+      <p>{{ $t('Discount') }}</p>
+      <price :value="mainStore.cart.calculated.discountTotal.value" />
+    </div>
+    <div
+      v-if="mainStore.cart.calculated.shippingSubTotal.value > 0"
+      class="flex justify-between text-base font-medium text-gray-900"
+    >
+      <p>{{ $t('Shipping') }}</p>
+      <price :value="mainStore.cart.calculated.shippingSubTotal.value" />
+    </div>
+    <div class="flex justify-between text-base font-medium text-gray-900">
+      <p>{{ $t('Tax') }}</p>
+      <price :value="mainStore.cart.calculated.taxTotal.value" />
+    </div>
+    <div class="flex justify-between text-base font-medium text-gray-900">
+      <p>{{ $t('Total') }}</p>
+      <price :value="mainStore.cart.calculated.total.value" />
+      <!-- <p class="fs-6 px-3" style="color: #303e49; margin-top: -8px">
+        {{ $t(`({itemsCount} items)`, { itemsCount: mainStore.cartItemsCount }) }}
+      </p> -->
     </div>
   </div>
 </template>
 
 <script setup>
-const store = useMainStore();
+const mainStore = useMainStore();
 </script>

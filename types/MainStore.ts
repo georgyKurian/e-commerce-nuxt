@@ -1,4 +1,4 @@
 export interface MainStore {
   user: typeof User | null;
-  cart: (typeof CartItem)[];
+  cart: typeof Object | null;
 }

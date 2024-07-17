@@ -3,7 +3,7 @@
   "Add To Cart": "Add To Cart",
   "-Select store-": null,
   "Subtotal": null,
-  "({itemsCount} items)": null,
+  "({itemsCount} items)": "({itemsCount} items)",
   "Contact-Us": null,
   "RELATED PRODUCTS": null,
   "Sorry, we can't find any product with this features": null,

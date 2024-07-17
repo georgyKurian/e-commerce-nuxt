@@ -69,7 +69,7 @@
               {{ actionItem.label }}
             </p>
           </SfButton>
-          <LayoutHeaderCartButton @open="cartState" />
+          <LayoutHeaderCartButton @open="handleOpen" />
         </nav>
         <form role="search" class="flex md:hidden flex-[100%] my-2" @submit.prevent="search">
           <SfInput
@@ -99,7 +99,7 @@
         <!--User Modal-->
         <!-- <HeaderUserModal /> -->
         <!--Cart Component-->
-        <LayoutHeaderCart :is-open="cart" @close-cart="cartState" />
+        <LayoutHeaderCart :is-open="cart" @close-cart="handleClose" />
       </div>
       <!-- Desktop dropdown -->
       <nav ref="floatingRef">
@@ -276,7 +276,8 @@ import MenuData from '../../components/MenuData';
 
 const cart = ref(false);
 
-const cartState = () => (cart.value = !cart.value);
+const handleOpen = () => (cart.value = true);
+const handleClose = () => (cart.value = false);
 
 const findNode = (keys: string[], node: typeof MenuNode): typeof MenuNode => {
   if (keys.length > 1) {

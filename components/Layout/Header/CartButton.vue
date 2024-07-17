@@ -8,8 +8,8 @@
   >
     <SfIconShoppingCart />
     <SfBadge
-      v-show="store.cartItemsCount > 0"
-      :content="store.cartItemsCountText"
+      v-if="store.cartItemsCount > 0"
+      :content="store.cartItemsCount < 100 ? store.cartItemsCount : '99+'"
       class="outline outline-primary-700 bg-white !text-neutral-900 group-hover:outline-primary-800 group-active:outline-primary-900"
     />
   </SfButton>
