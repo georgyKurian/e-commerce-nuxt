@@ -58,7 +58,7 @@ const allowedDates = computed(() => {
 
 function addtoCart(item: object) {
   for (let i = 0; i < quantity.value; i++) {
-    mainStore.addToCart(item);
+    mainStore.addToCart(item, quantity.value);
   }
 }
 function imageUrl(file: string) {

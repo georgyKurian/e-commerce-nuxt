@@ -1,29 +1,30 @@
 <template>
   <div>
-    <div :class="['cart', cart.isOpen ? 'on' : '']">
+    <div :class="['cart', props.isOpen ? 'on' : '']">
       <div class="cart-menu">
         <p class="text-center mt-4 pb-2 h3">Cart</p>
-        <hr />
-        <Notification v-if="!store.cartItemsCount">
+        <hr class="border-gray-200" />
+        <Notification v-if="!mainStore.cartItemsCount">
           {{ $t('Your cart is empty, try to Add stuff.') }}
         </Notification>
-        <div v-for="item in store.cart" :key="item.id" class="row">
+        <ul v-for="item in mainStore.cart?.lines" :key="item.id" role="list" class="divide-y divide-gray-200">
           <CartItem :item="item" />
-        </div>
-        <div v-if="store.cartItemsCount">
-          <hr />
+        </ul>
+
+        <div v-if="mainStore.cartItemsCount">
+          <hr class="border-gray-200" />
           <CartTotal />
         </div>
       </div>
     </div>
-    <div :class="['modal', cart.isOpen ? '' : 'off']" @click="$emit('closeCart')" />
+    <div :class="['modal', props.isOpen ? '' : 'off']" @click="$emit('closeCart')" />
   </div>
 </template>
 
-<script setup>
-const store = useMainStore();
+<script setup lang="ts">
+const mainStore = useMainStore();
 
-const cart = defineProps({
+const props = defineProps({
   isOpen: {
     type: Boolean,
     default: false,
@@ -72,7 +73,7 @@ const cart = defineProps({
   right: 0;
   width: 360px;
   height: 100%;
-  background: #303e49;
+  background: white;
   overflow-y: auto;
   z-index: 1051;
   -webkit-overflow-scrolling: touch;
@@ -89,13 +90,9 @@ const cart = defineProps({
 }
 
 .cart-menu {
-  color: #eee;
+  color: #000000;
   margin-left: 10px;
   margin-right: 15px;
-}
-
-hr {
-  border-color: white;
 }
 
 .row {

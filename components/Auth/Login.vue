@@ -107,10 +107,10 @@ async function handleLogin() {
     await login(form.value);
     close();
   } catch (e) {
-    const { isValidationError, bag } = useApiError(e);
-    if (isValidationError) {
-      errors.value = bag;
-    }
+    // const { isValidationError, bag } = useApiError(e);
+    // if (isValidationError) {
+    //   errors.value = bag;
+    // }
   }
 }
 </script>
