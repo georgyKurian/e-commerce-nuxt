@@ -39,13 +39,15 @@ const useMainStore = defineStore('main', {
         console.log('error fetch', e);
       }
     },
-    async removeFromCart(productVariant: typeof Product) {
+    async removeFromCart(cartLine: typeof CartItem) {
       const client = useSanctumClient();
       try {
         const { data } = await client('api/v1/cart/remove', {
           method: 'POST',
-          body: { product_variant: productVariant },
+          body: { cart_line_id: cartLine.id },
         });
+        this.cart = data;
+        debugger;
       } catch (e) {
         console.log('error fetch', e);
       }

@@ -27,7 +27,7 @@
         <p class="text-gray-500">Qty {{ props.item.quantity }}</p>
 
         <div class="flex">
-          <button type="button" class="remove-btn font-medium" @click="mainStore.removeFromCart(item.id as number)">
+          <button type="button" class="remove-btn font-medium" @click="mainStore.removeFromCart(props.item)">
             Remove
           </button>
         </div>
