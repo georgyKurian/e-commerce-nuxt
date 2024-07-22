@@ -21,7 +21,7 @@ const categories = [
   {
     title: `Online Certifications`,
     image: 'https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/women_category.png',
-    link: '/category/online',
+    link: '/products',
   },
   {
     title: `Classroom courses`,

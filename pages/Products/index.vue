@@ -1,7 +1,6 @@
 <template>
   <div class="container mx-auto py-4 md:py-8">
     <div class="">
-      <SfButton @click="onClick">Fetch</SfButton>
       <div v-if="grid.cards.length !== 0" class="flex flex-row py-3">
         <ProductsFilterBar class="w-3/12 mr-2 md:block" />
 
@@ -49,7 +48,4 @@ const sortItems = (value) => {
   });
   return (grid.sortButton = value.toUpperCase());
 };
-async function onClick() {
-  productStore.fetchProducts();
-}
 </script>

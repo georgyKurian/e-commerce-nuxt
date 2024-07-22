@@ -14,16 +14,16 @@
           >
             <SfIconMenu class="text-white" />
           </SfButton>
-          <a
-            href="#"
-            aria-label="SF Homepage"
+          <NuxtLink
+            to="/"
+            aria-label="Home Page"
             class="flex shrink-0 w-8 h-8 lg:w-[12.5rem] lg:h-[1.75rem] items-center mr-auto text-white md:mr-10 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm"
           >
             <picture>
               <source srcset="/images/fi-logo.svg" media="(min-width: 1024px)" />
               <img src="/images/fi-logo.svg" alt="Sf Logo" width="500" />
             </picture>
-          </a>
+          </NuxtLink>
         </div>
         <form role="search" class="hidden md:flex flex-[100%] ml-10" @submit.prevent="search">
           <SfInput
