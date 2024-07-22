@@ -47,7 +47,6 @@ const useMainStore = defineStore('main', {
           body: { cart_line_id: cartLine.id },
         });
         this.cart = data;
-        debugger;
       } catch (e) {
         console.log('error fetch', e);
       }
