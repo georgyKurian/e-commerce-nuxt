@@ -15,13 +15,19 @@
           <hr class="border-gray-200" />
           <CartTotal />
         </div>
+        <SfButton class="w-full" variant="primary" @click="handleCheckout">
+          {{ $t('Checkout') }}
+        </SfButton>
       </div>
     </div>
-    <div :class="['modal', props.isOpen ? '' : 'off']" @click="$emit('closeCart')" />
+    <div :class="['modal', props.isOpen ? '' : 'off']" @click="emit('closeCart')" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { SfButton } from '@storefront-ui/vue';
+const router = useRouter();
+const emit = defineEmits(['closeCart']);
 const mainStore = useMainStore();
 
 const props = defineProps({
@@ -30,6 +36,11 @@ const props = defineProps({
     default: false,
   },
 });
+
+const handleCheckout = () => {
+  router.push('/checkout');
+  emit('closeCart');
+};
 </script>
 
 <style scoped>
