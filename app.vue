@@ -10,11 +10,11 @@ const mainStore = useMainStore();
 const sanctumUser = useSanctumUser();
 onServerPrefetch(async () => {
   mainStore.fetchCart();
-  mainStore.user = sanctumUser;
+  mainStore.user = sanctumUser.value;
 });
 onBeforeMount(async () => {
   mainStore.fetchCart();
-  mainStore.user = sanctumUser;
+  mainStore.user = sanctumUser.value;
 });
 
 // Watch for changes in sanctumUser and update store.user accordingly
